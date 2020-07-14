@@ -6,8 +6,8 @@
         <field name="inherit_id" ref="account.view_account_move_line_filter"/>
         <field name="arch" type="xml">
             <field name="name" position="after">
-                <field name="credit"/>
-                <field name="debit"/>
+                <field name="name" filter_domain="[('debit','=',self)]" string="Debe"/>
+                <field name="name" filter_domain="[('credit','=',self)]" string="Haber"/>
             </field>                        
         </field>
     </record>

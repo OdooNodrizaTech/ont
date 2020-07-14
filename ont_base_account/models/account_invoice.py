@@ -3,8 +3,8 @@
 import logging
 _logger = logging.getLogger(__name__)
 
-from openerp import api, models, fields
-from openerp.exceptions import Warning
+from odoo import api, models, fields
+from odoo.exceptions import Warning
 
 class AccountInvoice(models.Model):
     _inherit = 'account.invoice'

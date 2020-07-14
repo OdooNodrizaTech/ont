@@ -3,8 +3,7 @@
 import logging
 _logger = logging.getLogger(__name__)
 
-from openerp import api, models, fields
-from openerp.exceptions import Warning
+from odoo import api, models, fields
 
 class AccountInvoice(models.Model):
     _inherit = 'account.invoice'
@@ -22,7 +21,7 @@ class AccountInvoice(models.Model):
         if self.margin!=0 and self.amount_untaxed>0:
             margin_percent = (self.margin / self.amount_untaxed) * 100
             self.margin_percent = "{:.2f}".format(margin_percent)
-    
+
     @api.one
     def action_invoice_open(self):
         self.action_regenerate_margin()

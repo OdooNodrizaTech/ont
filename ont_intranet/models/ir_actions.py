@@ -3,8 +3,7 @@
 import logging
 _logger = logging.getLogger(__name__)
 
-from openerp import api, models, fields, osv
-from openerp.exceptions import Warning
+from odoo import api, models, fields, osv
 
 class IrActionsAct_url(models.Model):
     _inherit = 'ir.actions.act_url'

@@ -5,11 +5,13 @@
         <field name="model">account.invoice</field>
         <field name="inherit_id" ref="account.view_account_invoice_filter"/>
         <field name="arch" type="xml">
-            <field name="journal_id" position="before">	    	
-                <field name="amount_total" string="Total"/>
-            </field>                        
+            <field name="number" position="after">
+                <field name="number" filter_domain="[('amount_untaxed','=',self)]" string="Base imponible"/>
+                <field name="number" filter_domain="[('amount_total','=',self)]" string="Total"/>
+                <field name="number" filter_domain="[('residual','=',self)]" string="Importe pendiente"/>
+            </field>
         </field>
-    </record>    
+    </record>
     <record id="ont_base_account_invoice_tree" model="ir.ui.view">
         <field name="name">ont_base_account_invoice_tree</field>
         <field name="model">account.invoice</field>

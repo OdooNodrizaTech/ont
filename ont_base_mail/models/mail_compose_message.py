@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
-from openerp import api, models, fields
+from openerp import api, models, fields, _
 from openerp.exceptions import Warning
 
 import logging
@@ -19,7 +19,7 @@ class MailComposer(models.TransientModel):
                 total_size_attachments = total_size_attachments + attachment_id.file_size
         
         if total_size_attachments>=limit_size_attachments:    
-            raise Warning("El limite maximo de los adjuntos de un email es de 10MB")
+            raise Warning(_('The maximum limit of email attachments is 10MB'))
     
     @api.multi
     @api.onchange('attachment_ids','template_id')

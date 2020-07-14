@@ -1,26 +1,27 @@
-<openerp>
-    <data noupdate="1">
-        <record id="cron_regenerate_purchase_price_send_orders" model="ir.cron">
-            <field name="name">Regenerate Purchase Prices Send Orders</field>
-            <field name="active" eval="True" />
-            <field name="user_id" ref="base.user_root" />
-            <field name="interval_number">1</field>
-            <field name="interval_type">days</field>
-            <field name="numbercall">-1</field>
-            <field name="model" eval="'sale.order'" />
-            <field name="function" eval="'cron_action_regenerate_purchase_prices_send_orders'" />
-            <field name="args" eval="" />
-        </record>
-        <record id="cron_regenerate_purchase_price_all" model="ir.cron">
-            <field name="name">Regenerate Purchase Prices All</field>
-            <field name="active" eval="True" />
-            <field name="user_id" ref="base.user_root" />
-            <field name="interval_number">1</field>
-            <field name="interval_type">months</field>
-            <field name="numbercall">-1</field>
-            <field name="model" eval="'sale.order'" />
-            <field name="function" eval="'cron_action_regenerate_purchase_prices_all'" />
-            <field name="args" eval="" />
-        </record>        
-    </data>
-</openerp>
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="cron_regenerate_purchase_price_send_orders" forcecreate="True" model="ir.cron">
+        <field name="name">Regenerate Purchase Prices Send Orders</field>
+        <field name="active" eval="True"/>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+        <field name="model_id" ref="model_sale_order"/>
+        <field name="state">code</field>
+        <field name="code">model.cron_action_regenerate_purchase_prices_send_orders()</field>
+    </record>
+    <record id="cron_regenerate_purchase_price_all" forcecreate="True" model="ir.cron">
+        <field name="name">Regenerate Purchase Prices All</field>
+        <field name="active" eval="True"/>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">months</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+        <field name="model_id" ref="model_sale_order"/>
+        <field name="state">code</field>
+        <field name="code">model.cron_action_regenerate_purchase_prices_all()</field>
+    </record>
+</odoo>

@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
     'name': 'Ont Freshdesk',
-    'version': '10.0.1.0.0',    
+    'version': '12.0.1.0.0',    
     'author': 'Odoo Nodriza Tech (ONT)',
     'website': 'https://nodrizatech.com/',
     'category': 'Tools',

@@ -15,4 +15,4 @@ class AccountBankStatementLine(models.Model):
         if len(return_item)>0:
             return_item = list(reversed(return_item))
         #return
-        return return_item        
+        return return_item

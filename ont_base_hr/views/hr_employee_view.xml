@@ -5,21 +5,19 @@
         <field name="model">hr.employee</field>
         <field name="inherit_id" ref="hr.view_employee_form"/>
         <field name="arch" type="xml">
-             <xpath expr="/form/sheet/notebook/page[@name='hr_settings']" position="after">             
-                <page name="hr_additional_info" string="Informacion adicional">
-                    <group>
-                        <label for="academic_training" string="Formacion academica"/>
-                        <field name="academic_training" nolabel="1" />                        
-                        <label for="additional_courses" string="Cursos adicionales"/>                        
-                        <field name="additional_courses" nolabel="1" />                        
-                        <label for="professional_skills" string="Habilidades profesionales"/>
-                        <field name="professional_skills" nolabel="1" />                        
-                        <label for="professional_goals" string="Metas profesionales"/>
-                        <field name="professional_goals" nolabel="1" />                        
-                        <label for="personal_skills" string="Habilidades personales"/>
-                        <field name="personal_skills" nolabel="1" />                                                                        
-                    </group>
-                </page>                
+             <xpath expr="//group[@name='active_group']" position="after">             
+                <group string="Aditional information">
+                    <label for="academic_training" string="Academic training"/>
+                    <field name="academic_training" nolabel="1" />                        
+                    <label for="additional_courses" string="Additional courses"/>
+                    <field name="additional_courses" nolabel="1" />                        
+                    <label for="professional_skills" string="Professional skills"/>
+                    <field name="professional_skills" nolabel="1" />                        
+                    <label for="professional_goals" string="Professional goals"/>
+                    <field name="professional_goals" nolabel="1" />                        
+                    <label for="personal_skills" string="Personal skills"/>
+                    <field name="personal_skills" nolabel="1" />                                                                        
+                </group>                
             </xpath>
         </field>
     </record>

@@ -20,3 +20,15 @@ class PurchaseOrder(models.Model):
         index=True,  
         default=lambda self: self.env.user
     )
+
+    @api.multi
+    def button_confirm(self):
+        # action_confirm
+        return_data = super(PurchaseOrder, self).button_confirm()
+        #operations
+        for item in self:
+            if item.state=='purchase':
+                for picking_id in item.picking_ids:
+                    picking_id.purchase_id = item.id
+        #return
+        return return_data

@@ -1,22 +1,22 @@
 # -*- coding: utf-8 -*-
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
-from openerp import api, models, fields
+from odoo import api, models, fields
 
 class HrEmployee(models.Model):
     _inherit = 'hr.employee'
     
     academic_training = fields.Text( 
-        string='Formacion academica',
+        string='Academic training',
     )
     additional_courses = fields.Text( 
-        string='Cursos adicionales',
+        string='Additional courses',
     )
     professional_skills = fields.Text( 
-        string='Habilidades profesionales',
+        string='Profesisonal skills',
     )
     professional_goals = fields.Text( 
-        string='Metas profesionales',
+        string='Professional Goals',
     )
     personal_skills = fields.Text( 
-        string='Habilidades personales',
+        string='Personal Skills',
     )

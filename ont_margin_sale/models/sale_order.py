@@ -29,32 +29,31 @@ class SaleOrder(models.Model):
         
     @api.one
     def action_regenerate_purchase_prices(self):
-        if self.state in ['sale', 'done']:
+        if self.state=='sale' or self.state=='done':
             order_lines = {}
-            for order_line in self.order_line:
-                order_lines[order_line.product_id.id] = {
-                    'is_delivery': order_line.is_delivery,                          
+            for order_line in self.order_line:                
+                order_lines[order_line.product_id.id] = {                          
                     'purchase_price': 0,
                     'standard_price': order_line.product_id.standard_price,                     
                 }
-                        
-            if self.picking_ids!=False:
-                for picking_id in self.picking_ids:
-                    if picking_id.state=='done':                        
-                        if picking_id.move_lines!=False:
-                            for move_line in picking_id.move_lines:
-                                if move_line.quant_ids!=False:
-                                    for quant_id in move_line.quant_ids:
-                                        #cost
-                                        if quant_id.cost>0:
-                                            order_lines[move_line.product_id.id]['purchase_price'] = quant_id.cost
-                                        else: 
-                                            order_lines[move_line.product_id.id]['purchase_price'] = (quant_id.inventory_value/quant_id.qty)
+            #operations picking_ids            
+            if 'picking_ids' in self:                        
+                if self.picking_ids!=False:
+                    for picking_id in self.picking_ids:
+                        if picking_id.state=='done':                        
+                            if picking_id.move_lines!=False:
+                                for move_line in picking_id.move_lines:
+                                    if move_line.quant_ids!=False:
+                                        for quant_id in move_line.quant_ids:
+                                            #cost
+                                            if quant_id.cost>0:
+                                                order_lines[move_line.product_id.id]['purchase_price'] = quant_id.cost
+                                            else: 
+                                                order_lines[move_line.product_id.id]['purchase_price'] = (quant_id.inventory_value/quant_id.qty)
             #operations                                                    
             for order_line_key in order_lines:
-                if order_lines[order_line_key]['is_delivery']==False:
-                    if order_lines[order_line_key]['purchase_price']==0:
-                        order_lines[order_line_key]['purchase_price'] = order_lines[order_line_key]['standard_price']
+                if order_lines[order_line_key]['purchase_price']==0:
+                    order_lines[order_line_key]['purchase_price'] = order_lines[order_line_key]['standard_price']
             #operations2
             margin_order = 0                    
             for order_line in self.order_line:
@@ -81,8 +80,8 @@ class SaleOrder(models.Model):
             #action_calculate_margin_percent
             self.action_calculate_margin_percent()            
     
-    @api.multi    
-    def cron_action_regenerate_purchase_prices_send_orders(self, cr=None, uid=False, context=None):
+    @api.model    
+    def cron_action_regenerate_purchase_prices_send_orders(self):
         current_date = datetime.today()        
         start_date = current_date + relativedelta(months=-1)
         end_date = current_date
@@ -97,8 +96,8 @@ class SaleOrder(models.Model):
         for sale_order_id in sale_order_ids:
             sale_order_id.action_regenerate_purchase_prices()                                                                                                                 
                                                                     
-    @api.multi    
-    def cron_action_regenerate_purchase_prices_all(self, cr=None, uid=False, context=None):
+    @api.model    
+    def cron_action_regenerate_purchase_prices_all(self):
         #general
         sale_order_ids = self.env['sale.order'].search(
             [

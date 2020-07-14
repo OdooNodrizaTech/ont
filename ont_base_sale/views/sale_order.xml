@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odoo>    
-    <record id="ont_base_sale_sale_order_view_search_inherit_quotation" model="ir.ui.view">
-        <field name="name">ont_base_sale_sale_order_view_search_inherit_quotation</field>
-        <field name="model">sale.order</field>
-        <field name="inherit_id" ref="sale.sale_order_view_search_inherit_quotation" />
-        <field name="priority" eval="20"/>                
-        <field name="arch" type="xml">
-            <field name="name" position="after">
-                <field name="amount_total" string="Total"/>
-            </field>                                                            
-        </field>
-    </record>
+<odoo>        
     <record id="ont_base_sale_sale_order_view_search_inherit_sale" model="ir.ui.view">
         <field name="name">ont_base_sale_sale_order_view_search_inherit_sale</field>
         <field name="model">sale.order</field>

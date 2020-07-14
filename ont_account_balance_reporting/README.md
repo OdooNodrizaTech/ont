@@ -1,1 +1,0 @@
-El módulo contiene el desarrollo para optimizar el modelo account.balance.reporting.line de tal forma que sobrescribe la acción get_current_acount_account_ids para obtener las cuentas contables ORDENADAS por código de forma ascendente.

@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 from odoo import api, models, fields
-from datetime import datetime
 
 import logging
 _logger = logging.getLogger(__name__)
@@ -16,6 +15,10 @@ class StockPicking(models.Model):
         comodel_name='purchase.order',
         string='Compra',
         copy=False
+    )
+    number_of_packages = fields.Integer(
+        string='Bultos',
+        default=1
     )
     number_of_pallets = fields.Integer(
         string='Palets',

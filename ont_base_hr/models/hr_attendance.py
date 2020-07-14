@@ -13,7 +13,7 @@ class HrAttendance(models.Model):
         allow_create = True
         #check multiple attendance without check_out
         if 'check_out' not in values:
-            hr_attendance_ids = self.env['hr.attendance'].sudo().search([('employee_id', '=', values['employee_id']),('employee_id', '=', False)])
+            hr_attendance_ids = self.env['hr.attendance'].sudo().search([('employee_id', '=', values['employee_id']),('check_out', '=', False)])
             if len(hr_attendance_ids)>0:
                 allow_create = False
         

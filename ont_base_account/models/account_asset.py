@@ -3,11 +3,11 @@
 import logging
 _logger = logging.getLogger(__name__)
 
-from openerp import api, models, fields
-from openerp.exceptions import Warning
+from odoo import api, models, fields
+from odoo.exceptions import Warning
 
-class AccountAssetAsset(models.Model):
-    _inherit = 'account.asset.asset'
+class AccountAsset(models.Model):
+    _inherit = 'account.asset'
     
     depreciated_value = fields.Float(
         compute='_depreciated_value',
@@ -33,4 +33,10 @@ class AccountAssetAsset(models.Model):
                         if item.state!='close':
                             depreciation_line_id.post_lines_and_close_asset()                
             
-        return super(AccountAssetAsset, self).set_to_close()                    
+        return super(AccountAssetAsset, self).set_to_close()
+
+    @api.model
+    def _cron_generate_entries(self):
+        _logger.info('_cron_generate_entries')
+        assets = self.env['account.asset'].search([('state', '=', 'open')])
+        created_move_ids, error_log = assets._compute_entries(fields.Date.today(), check_triggers=True)
