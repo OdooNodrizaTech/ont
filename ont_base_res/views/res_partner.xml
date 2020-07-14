@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>    
+    <record id="ont_base_res_view_res_partner_filter" model="ir.ui.view">
+        <field name="name">ont_base_res_view_res_partner_filter</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="email"/>
+                <field name="phone" filter_domain="['|', ('phone','ilike', self), ('mobile','ilike', self)]"/>
+                <field name="mobile" filter_domain="['|', ('mobile','ilike', self), ('phone','ilike', self)]"/>
+                <field name="vat"/>                                
+            </field>            
+        </field>
+    </record>
+    <record id="ont_base_res_view_partner_tree" model="ir.ui.view">
+        <field name="name">ont_base_res_view_partner_tree</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <field name="email" position="after">
+                <field name="ref"/>
+                <field name="vat"/>
+                <field name="city"/>
+                <!--<field name="property_product_pricelist"/>!-->
+                <field name="create_date"/>                                
+            </field>            
+        </field>
+    </record>        
+    <!--
+    <record id="ont_base_res_view_partner_category_form" model="ir.ui.view">
+        <field name="name">view_partner_category_arelux_form</field>
+        <field name="model">res.partner.category</field>
+        <field name="inherit_id" ref="base.view_partner_category_form" />
+        <field name="priority" eval="20"/>                
+        <field name="arch" type="xml">
+            <field name="parent_id" position="after">
+                <field name="position"/>
+            </field>                                                            
+        </field>
+    </record>
+    !-->
+</odoo>

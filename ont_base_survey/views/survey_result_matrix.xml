@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="report_header_custom" inherit_id="survey.result_matrix">
+            <xpath expr="//td[@class='survey_answer']" position="before">
+                <t t-set="sum_value_answer" t-value="0"/>
+            </xpath>
+            <xpath expr="//td[@class='survey_answer']" position="inside">
+                <t t-if="matrix_result['result'][(row_id,answer_id)]>0">
+                    <t t-set="sum_value_answer_item" t-value="int(matrix_result['answers'][answer_id])*int(matrix_result['result'][(row_id,answer_id)])"/>
+                    <t t-set="sum_value_answer" t-value="sum_value_answer+sum_value_answer_item"/>
+                </t>
+            </xpath>
+            <xpath expr="//td[@class='survey_answer']" position="after">
+                <td>                    
+                    <span t-esc="round(sum_value_answer/round(input_summary['answered'],1),1)"/>
+                    <span class="label label-primary" t-esc="input_summary['answered']"/>
+                </td>
+            </xpath>
+            <xpath expr="//table[1]/thead/tr" position="inside">	
+                <th class="text-right">Media</th>
+            </xpath>
+        </template>
+    </data>          
+</odoo>

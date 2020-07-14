@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template xml:space="preserve">
+    <t t-extend="ListView.buttons">
+        <t t-jquery="button.o_list_button_save" t-operation="after">
+            <t t-if="widget.model=='survey.user_input'">
+                <button class="btn btn-primary btn-sm o_survey_user_input_pedir_llamada_button" type="button">Pedir llamada</button>
+            </t>
+        </t>
+    </t>
+</template>

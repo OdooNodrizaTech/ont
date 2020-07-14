@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ont_base_account_view_account_move_line_filter" model="ir.ui.view">
+        <field name="name">ont_base_account_view_account_move_line_filter</field>
+        <field name="model">account.move.line</field>
+        <field name="inherit_id" ref="account.view_account_move_line_filter"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="credit"/>
+                <field name="debit"/>
+            </field>                        
+        </field>
+    </record>
+    <record id="ont_base_account_view_move_line_tree" model="ir.ui.view">
+        <field name="name">ont_base_account_view_move_line_tree</field>
+        <field name="model">account.move.line</field>
+        <field name="inherit_id" ref="account.view_move_line_tree"/>
+        <field name="arch" type="xml">
+            <field name="date_maturity" position="before">
+                <field name="balance" sum="Total Balance"/>
+            </field>
+            <field name="company_id" position="after">
+                <field name="create_uid" readonly="1"/>
+                <field name="create_date" readonly="1"/>
+            </field>            
+        </field>
+    </record>
+    <record id="ont_base_account_view_move_line_form" model="ir.ui.view">
+        <field name="name">ont_base_account_view_move_line_form</field>
+        <field name="model">account.move.line</field>
+        <field name="inherit_id" ref="account.view_move_line_form"/>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="create_uid" readonly="1"/>
+                <field name="create_date" readonly="1"/>
+                <field name="write_uid" readonly="1"/>
+                <field name="write_date" readonly="1"/>
+            </field>                        
+        </field>
+    </record>
+    <record id="ont_base_account_view_account_move_line_pivot" model="ir.ui.view">
+        <field name="name">ont_base_account_view_account_move_line_pivot</field>
+        <field name="model">account.move.line</field>
+        <field name="arch" type="xml">
+            <pivot string="Account Move Lines" display_quantity="true">
+                <field name="account_id"/>
+                <field name="debit" type="measure"/>
+                <field name="credit" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+</odoo>
