@@ -10,6 +10,8 @@ class StockPicking(models.Model):
 
     sale_order_note = fields.Char(
         string='Nota pedido de venta',
+        related='sale_id.picking_note',
+        store=False
     )
     purchase_id = fields.Many2one(
         comodel_name='purchase.order',
@@ -33,8 +35,8 @@ class StockPicking(models.Model):
         size=30
     )
     partner_state_id = fields.Char(
-        compute='_get_partner_state_id',
         string='Provincia',
+        related='partner_id.state_id',
         store=False
     )
     user_id_done = fields.Many2one(
@@ -47,14 +49,6 @@ class StockPicking(models.Model):
         copy=False,
         readonly=True
     )
-
-    @api.multi
-    def _get_partner_state_id(self):
-        for obj in self:
-            obj.partner_state_id = ''
-            if obj.partner_id.id > 0:
-                if obj.partner_id.state_id.id > 0:
-                    obj.partner_state_id = obj.partner_id.state_id.name
 
     @api.multi
     def _create_backorder(self, backorder_moves=[]):

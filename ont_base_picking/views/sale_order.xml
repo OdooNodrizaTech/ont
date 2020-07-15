@@ -7,7 +7,7 @@
         <field name="priority" eval="18"/>
         <field name="arch" type="xml">
             <field name="note" position="after">
-                <field name="picking_note" placeholder="Establezca las notas para almacen" attrs="{'readonly': [('state', 'in', ('sale','done','cancel'))]}" style="width:100%;float:none;margin-bottom: 20px;" />
+                <field name="picking_note" placeholder="Establezca las notas para almacen" attrs="{'readonly': [('state', 'in', ('sale','done','cancel'))]}" />
             </field>
         </field>
     </record>
