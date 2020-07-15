@@ -33,7 +33,7 @@ class StockPicking(models.Model):
     )
     partner_state_id = fields.Char(
         string='Provincia',
-        related='partner_id.state_id',
+        related='partner_id.state_id.name',
         store=False
     )
     user_id_done = fields.Many2one(
