@@ -22,5 +22,4 @@ class AccountInvoice(models.Model):
             if purchase_id.payment_mode_id.id>0:
                 self.payment_mode_id = purchase_id.payment_mode_id.id              
                 
-        return {}                                       
-                                                                                                                                                     
+        return {}
