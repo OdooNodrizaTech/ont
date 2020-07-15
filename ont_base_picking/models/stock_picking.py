@@ -8,7 +8,7 @@ _logger = logging.getLogger(__name__)
 class StockPicking(models.Model):
     _inherit = 'stock.picking'
 
-    sale_order_note = fields.Char(
+    sale_order_note = fields.Text(
         string='Nota pedido de venta',
         related='sale_id.picking_note',
         store=False
