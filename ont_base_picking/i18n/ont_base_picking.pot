@@ -1,0 +1,97 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* ont_base_picking
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0-20200601\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-07-16 07:31+0000\n"
+"PO-Revision-Date: 2020-07-16 07:31+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: ont_base_picking
+#: model:ir.model.fields,help:ont_base_picking.field_stock_picking__partner_state_id
+msgid "Administrative divisions of a country. E.g. Fed. State, Departement, Canton"
+msgstr ""
+
+#. module: ont_base_picking
+#: model:ir.model.fields,field_description:ont_base_picking.field_stock_picking__management_date
+msgid "Management date"
+msgstr ""
+
+#. module: ont_base_picking
+#: model:ir.model.fields,field_description:ont_base_picking.field_stock_picking__number_of_minipallets
+msgid "Number of minipallets"
+msgstr ""
+
+#. module: ont_base_picking
+#: model:ir.model.fields,field_description:ont_base_picking.field_stock_picking__number_of_packages
+msgid "Number of packages"
+msgstr ""
+
+#. module: ont_base_picking
+#: model:ir.model.fields,field_description:ont_base_picking.field_stock_picking__number_of_pallets
+msgid "Number of pallets"
+msgstr ""
+
+#. module: ont_base_picking
+#: model:ir.model.fields,field_description:ont_base_picking.field_sale_order__picking_note
+msgid "Picking note"
+msgstr ""
+
+#. module: ont_base_picking
+#: model:ir.model.fields,field_description:ont_base_picking.field_stock_picking__purchase_id
+msgid "Purchase"
+msgstr ""
+
+#. module: ont_base_picking
+#: model:ir.model,name:ont_base_picking.model_purchase_order
+msgid "Purchase Order"
+msgstr ""
+
+#. module: ont_base_picking
+#: model:ir.model,name:ont_base_picking.model_sale_order
+msgid "Sale Order"
+msgstr ""
+
+#. module: ont_base_picking
+#: model:ir.model.fields,field_description:ont_base_picking.field_stock_picking__sale_order_note
+msgid "Sale order note"
+msgstr ""
+
+#. module: ont_base_picking
+#: model_terms:ir.ui.view,arch_db:ont_base_picking.sale_order_ont_form
+msgid "Set notes to warehouse"
+msgstr ""
+
+#. module: ont_base_picking
+#: model:ir.model.fields,field_description:ont_base_picking.field_stock_picking__partner_state_id
+msgid "State"
+msgstr ""
+
+#. module: ont_base_picking
+#: model:ir.model.fields,field_description:ont_base_picking.field_stock_picking__supplier_ref
+msgid "Supplier ref"
+msgstr ""
+
+#. module: ont_base_picking
+#: model:ir.model,name:ont_base_picking.model_stock_picking
+msgid "Transfer"
+msgstr ""
+
+#. module: ont_base_picking
+#: model:ir.model.fields,field_description:ont_base_picking.field_stock_picking__user_id_done
+msgid "User id donde"
+msgstr ""
+
+#. module: ont_base_picking
+#: model_terms:ir.ui.view,arch_db:ont_base_picking.stock_picking_ont_form
+msgid "Warehouse note"
+msgstr ""
+
