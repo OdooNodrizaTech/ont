@@ -26,5 +26,5 @@
         <field name="state">code</field>
         <field name="code">model.cron_action_regenerate_purchase_prices_all()</field>
     </record>
-    
+
 </odoo>
