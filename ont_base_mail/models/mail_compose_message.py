@@ -1,10 +1,6 @@
-# -*- coding: utf-8 -*-
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
-from openerp import api, models, fields, _
+from odoo import api, models, _
 from openerp.exceptions import Warning
-
-import logging
-_logger = logging.getLogger(__name__)
 
 class MailComposer(models.TransientModel):
     _inherit = 'mail.compose.message'
@@ -14,7 +10,7 @@ class MailComposer(models.TransientModel):
         limit_size_attachments = 1000000*10
         total_size_attachments = 0
         
-        if self.attachment_ids!=False:
+        if self.attachment_ids != False:
             for attachment_id in self.attachment_ids:
                 total_size_attachments = total_size_attachments + attachment_id.file_size
         
