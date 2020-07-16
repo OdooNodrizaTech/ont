@@ -11,7 +11,8 @@ class StockPicking(models.Model):
     sale_order_note = fields.Text(
         string='Nota pedido de venta',
         related='sale_id.picking_note',
-        store=False
+        store=False,
+        readonly=True
     )
     purchase_id = fields.Many2one(
         comodel_name='purchase.order',

@@ -27,8 +27,8 @@
                 <field name="number_of_pallets"/>
                 <field name="number_of_minipallets"/>
             </field>
-            <field name="backorder_id" position="after">
-                <field name="sale_order_note" placeholder="Añadir una nota interna que se imprimirá en el vale de entrega" readonly="1" style="width:100%;float:none;margin-bottom: 20px;" />
+            <field name="package_level_ids" position="after">
+                <field name="sale_order_note" />
             </field>
             <field name="partner_id" position="before">
                 <field name="supplier_ref" />
