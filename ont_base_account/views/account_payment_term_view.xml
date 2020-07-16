@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <record id="ont_base_account_view_payment_term_form" model="ir.ui.view">
-        <field name="name">ont_base_account_view_payment_term_form</field>
+
+    <record id="account_payment_term_ont_form" model="ir.ui.view">
+        <field name="name">account.payment.term.ont.form</field>
         <field name="model">account.payment.term</field>
         <field name="inherit_id" ref="account.view_payment_term_form"/>
         <field name="arch" type="xml">       
@@ -10,9 +11,10 @@
                 <field name="payment_order_ok"/>               
             </field>
             <field name="line_ids" position="after">
-                <separator string="Modos de pago"/>
+                <separator string="Payment modes"/>
                 <field name="payment_mode_id"/>                
             </field>             
         </field>
     </record>
+
 </odoo>

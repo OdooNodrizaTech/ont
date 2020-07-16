@@ -1,22 +1,19 @@
-# -*- coding: utf-8 -*-
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
-import logging
-_logger = logging.getLogger(__name__)
 
-from odoo import api, models, fields
-from odoo.exceptions import Warning
+from odoo import  models, fields
+
 
 class AccountPaymentTerm(models.Model):
     _inherit = 'account.payment.term'
     _order = 'position'
     
     position = fields.Integer(
-        string='Posicion'
+        string='Position'
     )
     payment_order_ok = fields.Boolean(
-        string='Seleccionable en las ordenes'
+        string='Selectable in orders'
     )
     payment_mode_id = fields.Many2many(
         comodel_name='account.payment.mode', 
-        string='Modos de pago',
+        string='Payment modes',
     )    

@@ -1,20 +1,17 @@
-# -*- coding: utf-8 -*-
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
-import logging
-_logger = logging.getLogger(__name__)
 
-from odoo import api, models, fields
-from odoo.exceptions import Warning
+from odoo import models, fields
+
 
 class AccountPaymentMode(models.Model):
     _inherit = 'account.payment.mode'
     _order = 'position'
     
     position = fields.Integer(
-        string='Posicion'
+        string='Position'
     )
     show_payment_method_id_journal_ids_in_pdf = fields.Boolean(
-        string='Mostrar en PDF',
-        help='Mostrar los numeros de cuenta de el/los diario/s del metodo de pago vinculado en los PDFs (Presupuesto y Factura)',
+        string='Show in pdf',
+        help='Show the account numbers of the newspapers of the linked payment method in the PDFs (Budget and Invoice)',
         default=False
     )

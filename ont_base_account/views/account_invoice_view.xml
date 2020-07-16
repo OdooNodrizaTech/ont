@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="ont_base_account_view_account_invoice_filter" model="ir.ui.view">
-        <field name="name">ont_base_account_view_account_invoice_filter</field>
+
+    <record id="account_invoice_ont_filter" model="ir.ui.view">
+        <field name="name">account.invoice.ont.filter</field>
         <field name="model">account.invoice</field>
         <field name="inherit_id" ref="account.view_account_invoice_filter"/>
         <field name="arch" type="xml">
             <field name="number" position="after">
-                <field name="number" filter_domain="[('amount_untaxed','=',self)]" string="Base imponible"/>
+                <field name="number" filter_domain="[('amount_untaxed','=',self)]" string="Amount untaxed"/>
                 <field name="number" filter_domain="[('amount_total','=',self)]" string="Total"/>
-                <field name="number" filter_domain="[('residual','=',self)]" string="Importe pendiente"/>
+                <field name="number" filter_domain="[('residual','=',self)]" string="Residual"/>
             </field>
         </field>
     </record>
-    <record id="ont_base_account_invoice_tree" model="ir.ui.view">
-        <field name="name">ont_base_account_invoice_tree</field>
+
+    <record id="account_invoice_ont_tree" model="ir.ui.view">
+        <field name="name">account.invoice.ont.tree</field>
         <field name="model">account.invoice</field>
         <field name="inherit_id" ref="account.invoice_tree"/>
         <field name="arch" type="xml">
@@ -29,8 +31,9 @@
             </field>            
         </field>
     </record>
-    <record id="ont_base_account_invoice_supplier_tree" model="ir.ui.view">
-        <field name="name">ont_base_account_invoice_supplier_tree</field>
+
+    <record id="account_invoice_ont_supplier_tree" model="ir.ui.view">
+        <field name="name">account.invoice.ont.supplier.tree</field>
         <field name="model">account.invoice</field>
         <field name="inherit_id" ref="account.invoice_supplier_tree"/>
         <field name="arch" type="xml">
@@ -46,4 +49,5 @@
             </field>            
         </field>
     </record>
+
 </odoo>
