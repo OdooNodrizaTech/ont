@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo noupdate="1">
+
     <record id="cron_regenerate_purchase_price_send_orders" forcecreate="True" model="ir.cron">
         <field name="name">Regenerate Purchase Prices Send Orders</field>
         <field name="active" eval="True"/>
@@ -12,6 +13,7 @@
         <field name="state">code</field>
         <field name="code">model.cron_action_regenerate_purchase_prices_send_orders()</field>
     </record>
+
     <record id="cron_regenerate_purchase_price_all" forcecreate="True" model="ir.cron">
         <field name="name">Regenerate Purchase Prices All</field>
         <field name="active" eval="True"/>
@@ -24,4 +26,5 @@
         <field name="state">code</field>
         <field name="code">model.cron_action_regenerate_purchase_prices_all()</field>
     </record>
+    
 </odoo>
