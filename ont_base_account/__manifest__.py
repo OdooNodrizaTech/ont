@@ -18,7 +18,7 @@
         "views/account_asset_view.xml",
         "views/account_fiscal_position_view.xml",
         "views/account_invoice_view.xml",
-        "views/account_move_view_view.xml",
+        "views/account_move_view.xml",
         "views/account_move_line_view.xml",
         "views/account_payment_mode_view.xml",
         "views/account_payment_term_view.xml",
