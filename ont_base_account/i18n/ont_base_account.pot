@@ -1,0 +1,160 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* ont_base_account
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0-20200601\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-07-16 10:38+0000\n"
+"PO-Revision-Date: 2020-07-16 10:38+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: ont_base_account
+#: model_terms:ir.ui.view,arch_db:ont_base_account.account_move_line_ont_pivot
+msgid "Account Move Lines"
+msgstr ""
+
+#. module: ont_base_account
+#: model_terms:ir.ui.view,arch_db:ont_base_account.account_invoice_ont_filter
+msgid "Amount untaxed"
+msgstr ""
+
+#. module: ont_base_account
+#: model:ir.model,name:ont_base_account.model_account_asset
+msgid "Asset"
+msgstr ""
+
+#. module: ont_base_account
+#: model:ir.model,name:ont_base_account.model_account_bank_statement_line
+msgid "Bank Statement Line"
+msgstr ""
+
+#. module: ont_base_account
+#: model:ir.model.fields,field_description:ont_base_account.field_account_invoice__partner_bank_name
+msgid "Bank name"
+msgstr ""
+
+#. module: ont_base_account
+#: model_terms:ir.ui.view,arch_db:ont_base_account.account_move_line_ont_filter
+msgid "Debe"
+msgstr ""
+
+#. module: ont_base_account
+#: model:ir.model.fields,field_description:ont_base_account.field_account_asset__depreciated_value
+msgid "Depreciated value"
+msgstr ""
+
+#. module: ont_base_account
+#: model:ir.model,name:ont_base_account.model_account_fiscal_position
+msgid "Fiscal Position"
+msgstr ""
+
+#. module: ont_base_account
+#: model:ir.actions.server,name:ont_base_account._cron_generate_entries_ir_actions_server
+#: model:ir.cron,cron_name:ont_base_account._cron_generate_entries
+#: model:ir.cron,name:ont_base_account._cron_generate_entries
+msgid "Generate Asset Entries"
+msgstr ""
+
+#. module: ont_base_account
+#: model_terms:ir.ui.view,arch_db:ont_base_account.account_move_line_ont_filter
+msgid "Haber"
+msgstr ""
+
+#. module: ont_base_account
+#: model:ir.model,name:ont_base_account.model_account_invoice
+msgid "Invoice"
+msgstr ""
+
+#. module: ont_base_account
+#: model:ir.model.fields,field_description:ont_base_account.field_account_fiscal_position__invoice_description
+msgid "Invoice description"
+msgstr ""
+
+#. module: ont_base_account
+#: model:ir.model,name:ont_base_account.model_account_payment_mode
+msgid "Payment Modes"
+msgstr ""
+
+#. module: ont_base_account
+#: model:ir.model,name:ont_base_account.model_account_payment_term
+msgid "Payment Terms"
+msgstr ""
+
+#. module: ont_base_account
+#: model_terms:ir.ui.view,arch_db:ont_base_account.sale_order_ont_form
+msgid "Payment mode"
+msgstr ""
+
+#. module: ont_base_account
+#: model:ir.model.fields,field_description:ont_base_account.field_account_payment_term__payment_mode_id
+#: model:ir.model.fields,field_description:ont_base_account.field_sale_order__payment_mode_id
+#: model_terms:ir.ui.view,arch_db:ont_base_account.account_payment_term_ont_form
+msgid "Payment modes"
+msgstr ""
+
+#. module: ont_base_account
+#: model:ir.model.fields,field_description:ont_base_account.field_account_payment_mode__position
+#: model:ir.model.fields,field_description:ont_base_account.field_account_payment_term__position
+msgid "Position"
+msgstr ""
+
+#. module: ont_base_account
+#: model_terms:ir.ui.view,arch_db:ont_base_account.account_invoice_ont_filter
+msgid "Residual"
+msgstr ""
+
+#. module: ont_base_account
+#: model:ir.model,name:ont_base_account.model_sale_order
+msgid "Sale Order"
+msgstr ""
+
+#. module: ont_base_account
+#: model:ir.model.fields,field_description:ont_base_account.field_account_payment_term__payment_order_ok
+msgid "Selectable in orders"
+msgstr ""
+
+#. module: ont_base_account
+#: model:ir.model.fields,field_description:ont_base_account.field_account_payment_mode__show_payment_method_id_journal_ids_in_pdf
+msgid "Show in pdf"
+msgstr ""
+
+#. module: ont_base_account
+#: model:ir.model.fields,help:ont_base_account.field_account_payment_mode__show_payment_method_id_journal_ids_in_pdf
+msgid "Show the account numbers of the newspapers of the linked payment method in the PDFs (Budget and Invoice)"
+msgstr ""
+
+#. module: ont_base_account
+#: model:ir.model.fields,help:ont_base_account.field_account_invoice__inv_vat
+msgid "The Tax Identification Number. Complete it if the contact is subjected to government taxes. Used in some legal statements."
+msgstr ""
+
+#. module: ont_base_account
+#: code:addons/ont_base_account/models/sale_order.py:25
+#: code:addonsOdooNodrizaTech/ont/12.0/ont_base_account/models/sale_order.py:25
+#, python-format
+msgid "The payment method is incompatible with the payment term"
+msgstr ""
+
+#. module: ont_base_account
+#: model_terms:ir.ui.view,arch_db:ont_base_account.account_invoice_ont_filter
+#: model_terms:ir.ui.view,arch_db:ont_base_account.account_move_ont_filter
+msgid "Total"
+msgstr ""
+
+#. module: ont_base_account
+#: model_terms:ir.ui.view,arch_db:ont_base_account.account_move_line_ont_tree
+msgid "Total Balance"
+msgstr ""
+
+#. module: ont_base_account
+#: model:ir.model.fields,field_description:ont_base_account.field_account_invoice__inv_vat
+msgid "VAT"
+msgstr ""
+
