@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="ont_base_picking_view_order_form" model="ir.ui.view">
-        <field name="name">ont_base_picking_view_order_form</field>
+
+    <record id="sale_order_ont_form" model="ir.ui.view">
+        <field name="name">sale.order.ont.form</field>
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form" />
         <field name="priority" eval="18"/>
         <field name="arch" type="xml">
             <field name="note" position="after">
-                <field name="picking_note" placeholder="Establezca las notas para almacen" attrs="{'readonly': [('state', 'in', ('sale','done','cancel'))]}" />
+                <field name="picking_note" placeholder="Set notes to warehouse" attrs="{'readonly': [('state', 'in', ('sale','done','cancel'))]}" />
             </field>
         </field>
     </record>
+
 </odoo>

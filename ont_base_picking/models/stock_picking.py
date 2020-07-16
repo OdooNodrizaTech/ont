@@ -1,52 +1,50 @@
-# -*- coding: utf-8 -*-
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+
 from odoo import api, models, fields
 
-import logging
-_logger = logging.getLogger(__name__)
 
 class StockPicking(models.Model):
     _inherit = 'stock.picking'
 
     sale_order_note = fields.Text(
-        string='Nota pedido de venta',
+        string='Sale order note',
         related='sale_id.picking_note',
         store=False,
         readonly=True
     )
     purchase_id = fields.Many2one(
         comodel_name='purchase.order',
-        string='Compra',
+        string='Purchase',
         copy=False
     )
     number_of_packages = fields.Integer(
-        string='Bultos',
+        string='Number of packages',
         default=1
     )
     number_of_pallets = fields.Integer(
-        string='Palets',
+        string='Number of pallets',
         default=1
     )
     number_of_minipallets = fields.Integer(
-        string='Minipalets',
+        string='Number of minipallets',
         default=0
     )
     supplier_ref = fields.Char(
-        string='Referencia del proveedor',
+        string='Supplier ref',
         size=30
     )
     partner_state_id = fields.Char(
-        string='Provincia',
+        string='State',
         related='partner_id.state_id.name',
         store=False
     )
     user_id_done = fields.Many2one(
         comodel_name='res.users',
-        string='Preparado por',
+        string='User id donde',
         copy=False
     )
     management_date = fields.Datetime(
-        string='Fecha preparacion',
+        string='Management date',
         copy=False,
         readonly=True
     )

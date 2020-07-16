@@ -1,15 +1,13 @@
-# -*- coding: utf-8 -*-
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
-from odoo import api, models, fields
 
-import logging
-_logger = logging.getLogger(__name__)
+from odoo import models, fields
+
 
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     picking_note = fields.Text(
-        string='Nota albaran',
+        string='Picking note',
     )
 
     def _create_delivery_line(self, carrier, price_unit):
