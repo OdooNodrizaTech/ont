@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<openerp>
+<odoo>
+
     <data>
         <template id="ont_freshdesk_assets_backend" name="ont_freshdesk_assets_backend" inherit_id="web.assets_backend">
             <xpath expr="." position="inside">
@@ -7,4 +8,5 @@
             </xpath>
         </template>
     </data>
-</openerp>
+    
+</odoo>
