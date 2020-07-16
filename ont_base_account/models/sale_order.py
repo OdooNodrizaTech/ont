@@ -22,7 +22,7 @@ class SaleOrder(models.Model):
 
                 if not item.payment_mode_id.id in payment_mode_ids_allow:
                     allow_action_confirm = False
-                    raise UserError(_"The payment method is incompatible with the payment term"))
+                    raise UserError(_("The payment method is incompatible with the payment term"))
 
         if allow_action_confirm == True:
             return super(SaleOrder, self).action_confirm()
