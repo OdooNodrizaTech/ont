@@ -1,0 +1,49 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* ont_margin_account
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0-20200601\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-07-16 13:06+0000\n"
+"PO-Revision-Date: 2020-07-16 13:06+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: ont_margin_account
+#: model_terms:ir.ui.view,arch_db:ont_margin_account.account_invoice_ont_margin_form
+msgid "Calculate margin"
+msgstr ""
+
+#. module: ont_margin_account
+#: model:ir.model,name:ont_margin_account.model_account_invoice
+msgid "Invoice"
+msgstr ""
+
+#. module: ont_margin_account
+#: model:ir.model,name:ont_margin_account.model_account_invoice_line
+msgid "Invoice Line"
+msgstr ""
+
+#. module: ont_margin_account
+#: model:ir.model.fields,field_description:ont_margin_account.field_account_invoice__margin
+#: model:ir.model.fields,field_description:ont_margin_account.field_account_invoice_line__margin
+msgid "Margin"
+msgstr ""
+
+#. module: ont_margin_account
+#: model:ir.model.fields,field_description:ont_margin_account.field_account_invoice__margin_percent
+#: model:ir.model.fields,field_description:ont_margin_account.field_account_invoice_line__margin_percent
+msgid "Margin %"
+msgstr ""
+
+#. module: ont_margin_account
+#: model:ir.model,name:ont_margin_account.model_sale_order
+msgid "Sale Order"
+msgstr ""
+
