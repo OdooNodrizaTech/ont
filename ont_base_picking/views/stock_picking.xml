@@ -28,6 +28,7 @@
                 <field name="number_of_minipallets"/>
             </field>
             <field name="package_level_ids" position="after">
+                <separator string="Warehouse note" />
                 <field name="sale_order_note" />
             </field>
             <field name="partner_id" position="before">
