@@ -1,24 +1,20 @@
-# -*- coding: utf-8 -*-
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 from odoo import api, fields, models
 from dateutil.relativedelta import relativedelta
 from datetime import datetime
 import decimal
 
-import logging
-_logger = logging.getLogger(__name__)
-
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
     
     margin_percent = fields.Float( 
-        string='Margen %'
+        string='Margin %'
     )
     
     @api.one
     def action_calculate_margin_percent(self):
         self.margin_percent = 0            
-        if self.margin!=0 and self.amount_untaxed>0:
+        if self.margin !=0 and self.amount_untaxed > 0:
             margin_percent = (self.margin / self.amount_untaxed) * 100
             self.margin_percent = "{:.2f}".format(margin_percent)
     
@@ -29,55 +25,55 @@ class SaleOrder(models.Model):
         
     @api.one
     def action_regenerate_purchase_prices(self):
-        if self.state=='sale' or self.state=='done':
+        if self.state == 'sale' or self.state == 'done':
             order_lines = {}
             for order_line in self.order_line:                
                 order_lines[order_line.product_id.id] = {                          
                     'purchase_price': 0,
                     'standard_price': order_line.product_id.standard_price,                     
                 }
-            #operations picking_ids            
+            # operations picking_ids
             if 'picking_ids' in self:                        
-                if self.picking_ids!=False:
+                if self.picking_ids != False:
                     for picking_id in self.picking_ids:
-                        if picking_id.state=='done':                        
-                            if picking_id.move_lines!=False:
+                        if picking_id.state == 'done':
+                            if picking_id.move_lines != False:
                                 for move_line in picking_id.move_lines:
-                                    if move_line.quant_ids!=False:
+                                    if move_line.quant_ids != False:
                                         for quant_id in move_line.quant_ids:
-                                            #cost
-                                            if quant_id.cost>0:
+                                            # cost
+                                            if quant_id.cost > 0:
                                                 order_lines[move_line.product_id.id]['purchase_price'] = quant_id.cost
                                             else: 
                                                 order_lines[move_line.product_id.id]['purchase_price'] = (quant_id.inventory_value/quant_id.qty)
-            #operations                                                    
+            # operations
             for order_line_key in order_lines:
-                if order_lines[order_line_key]['purchase_price']==0:
+                if order_lines[order_line_key]['purchase_price'] == 0:
                     order_lines[order_line_key]['purchase_price'] = order_lines[order_line_key]['standard_price']
-            #operations2
-            margin_order = 0                    
+            # operations2
+            margin_order = 0
             for order_line in self.order_line:
-                #Fix Mer4
-                if order_line.product_id.id!=277:
+                # Fix Mer4
+                if order_line.product_id.id != 277:
                     order_line.purchase_price = order_lines[order_line.product_id.id]['purchase_price']
-                    #margin_line
+                    # margin_line
                     margin_line = 0
-                    #margin (qty delivered if not qty_invoiced)
-                    if self.invoice_status=='invoiced':
+                    # margin (qty delivered if not qty_invoiced)
+                    if self.invoice_status == 'invoiced':
                         margin_line = order_line.price_subtotal - (order_line.purchase_price * order_line.qty_invoiced)
-                    elif self.invoice_status=='no':
-                        if order_line.qty_delivered>0:
+                    elif self.invoice_status == 'no':
+                        if order_line.qty_delivered > 0:
                             margin_line = order_line.price_subtotal - (order_line.purchase_price * order_line.qty_delivered)
-                    #define                        
+                    # define
                     order_line.margin = "{:.2f}".format(margin_line)
-                    #action_calculate_margin_percent
+                    # action_calculate_margin_percent
                     order_line.action_calculate_margin_percent()                    
-                    #margin_order
+                    # margin_order
                     margin_order += order_line.margin                    
             
-            #margin                    
+            # margin
             self.margin = "{:.2f}".format(margin_order)
-            #action_calculate_margin_percent
+            # action_calculate_margin_percent
             self.action_calculate_margin_percent()            
     
     @api.model    
@@ -98,11 +94,11 @@ class SaleOrder(models.Model):
                                                                     
     @api.model    
     def cron_action_regenerate_purchase_prices_all(self):
-        #general
+        # general
         sale_order_ids = self.env['sale.order'].search(
             [
                 ('state', 'in', ('sale','done')),
-                ('confirmation_date', '>', '2017-12-31'),#Fix keep calm sage orders
+                ('confirmation_date', '>', '2017-12-31'),# Fix keep calm sage orders
             ]
         )
         _logger.info(len(sale_order_ids))        
