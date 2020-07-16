@@ -1,9 +1,6 @@
-# -*- coding: utf-8 -*-
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
-import logging
-_logger = logging.getLogger(__name__)
 
-from odoo import api, models, fields, osv
+from odoo import api, models
 
 class IrActionsAct_url(models.Model):
     _inherit = 'ir.actions.act_url'
@@ -11,7 +8,7 @@ class IrActionsAct_url(models.Model):
     @api.multi
     def read(self, fields=None, load='_classic_read'):
         res_items = super(IrActionsAct_url, self).read(fields, load=load)
-        if load=='_classic_read':
+        if load == '_classic_read':
             res_items = super(IrActionsAct_url, self).read(fields, load=load)
             key = 0
             for res_item in res_items:                
