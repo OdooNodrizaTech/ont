@@ -9,7 +9,7 @@ class AccountBankStatementLine(models.Model):
     def get_move_lines_for_reconciliation_widget(self, excluded_ids=None, str=False, offset=0, limit=None):
         return_item =  super(AccountBankStatementLine, self).get_move_lines_for_reconciliation_widget(excluded_ids, str, offset, limit)
         # operations (reverse)
-        if len(return_item) > 0:
+        if return_item:
             return_item = list(reversed(return_item))
         # return
         return return_item

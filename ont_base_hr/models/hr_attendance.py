@@ -11,12 +11,17 @@ class HrAttendance(models.Model):
     @api.model
     def create(self, values):
         allow_create = True
-        #check multiple attendance without check_out
+        # check multiple attendance without check_out
         if 'check_out' not in values:
-            hr_attendance_ids = self.env['hr.attendance'].sudo().search([('employee_id', '=', values['employee_id']),('check_out', '=', False)])
-            if len(hr_attendance_ids)>0:
+            hr_attendance_ids = self.env['hr.attendance'].sudo().search(
+                [
+                    ('employee_id', '=', values['employee_id']),
+                    ('check_out', '=', False)
+                ]
+            )
+            if hr_attendance_ids:
                 allow_create = False
         
-        if allow_create==True:
+        if allow_create:
             return_create = super(HrAttendance, self).create(values)
             return return_create                              

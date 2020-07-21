@@ -10,7 +10,7 @@ class MailComposer(models.TransientModel):
         limit_size_attachments = 1000000*10
         total_size_attachments = 0
         
-        if self.attachment_ids != False:
+        if self.attachment_ids:
             for attachment_id in self.attachment_ids:
                 total_size_attachments = total_size_attachments + attachment_id.file_size
         

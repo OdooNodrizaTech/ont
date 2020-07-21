@@ -60,8 +60,8 @@ class StockPicking(models.Model):
     @api.multi
     def _add_delivery_cost_to_so(self):
         for obj in self:
-            if obj.sale_id.id > 0:
-                if obj.carrier_id.id > 0:
+            if obj.sale_id:
+                if obj.carrier_id:
                     obj.sale_id.carrier_id = obj.carrier_id.id
         # return
         return super(StockPicking, self)._add_delivery_cost_to_so()

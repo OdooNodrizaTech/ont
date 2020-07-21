@@ -34,12 +34,12 @@ class SaleOrder(models.Model):
                 }
             # operations picking_ids
             if 'picking_ids' in self:                        
-                if self.picking_ids != False:
+                if self.picking_ids:
                     for picking_id in self.picking_ids:
                         if picking_id.state == 'done':
-                            if picking_id.move_lines != False:
+                            if picking_id.move_lines:
                                 for move_line in picking_id.move_lines:
-                                    if move_line.quant_ids != False:
+                                    if move_line.quant_ids:
                                         for quant_id in move_line.quant_ids:
                                             # cost
                                             if quant_id.cost > 0:

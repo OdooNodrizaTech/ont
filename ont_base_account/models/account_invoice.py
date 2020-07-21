@@ -20,8 +20,8 @@ class AccountInvoice(models.Model):
     def _partner_bank_name(self):
         for obj in self:
             obj.partner_bank_name = ''
-            if obj.partner_bank_id.id > 0:
-                if obj.partner_bank_id.bank_id.id > 0:
+            if obj.partner_bank_id:
+                if obj.partner_bank_id.bank_id:
                     obj.partner_bank_name = obj.partner_bank_id.bank_id.name + ' ' + obj.partner_bank_id.acc_number[-4:]
                 else:
                     obj.partner_bank_name = obj.partner_bank_id.acc_number

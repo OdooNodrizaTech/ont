@@ -18,7 +18,7 @@ class AccountAsset(models.Model):
         self.depreciated_value = 0
         if len(self.depreciation_line_ids) > 0:
             for depreciation_line_id in self.depreciation_line_ids:
-                if depreciation_line_id.move_id.id > 0:
+                if depreciation_line_id.move_id:
                     if depreciation_line_id.move_id.state == 'posted':
                         self.depreciated_value += depreciation_line_id.amount
               
