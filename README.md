@@ -1,5 +1,4 @@
 [![Build Status](https://travis-ci.org/OdooNodrizaTech/ont.svg?branch=12.0)](https://travis-ci.org/OdooNodrizaTech/ont)
-[![Coverage Status](https://coveralls.io/repos/OdooNodrizaTech/ont/badge.svg?branch=12.0)](https://coveralls.io/r/OdooNodrizaTech/ont?branch=12.0)
 
 ont
 =========
