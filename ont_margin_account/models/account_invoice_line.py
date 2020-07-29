@@ -2,19 +2,21 @@
 
 from odoo import api, models, fields
 
+
 class AccountInvoiceLine(models.Model):
     _inherit = 'account.invoice.line'
-        
-    margin = fields.Float( 
+
+    margin = fields.Float(
         string='Margin'
     )
-    margin_percent = fields.Float( 
+    margin_percent = fields.Float(
         string='Margin %'
     )
-    
-    @api.one
+
+    @api.multi
     def action_calculate_margin_percent(self):
-        self.margin_percent = 0        
+        self.ensure_one()
+        self.margin_percent = 0
         if self.margin != 0 and self.price_subtotal > 0:
             margin_line_percent = (self.margin / self.price_subtotal) * 100
             self.margin_percent = "{:.2f}".format(margin_line_percent)

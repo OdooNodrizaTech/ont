@@ -50,7 +50,7 @@ class StockPicking(models.Model):
     )
 
     @api.multi
-    def _create_backorder(self, backorder_moves=[]):
+    def _create_backorder(self, backorder_moves):
         for obj in self:
             if obj.state == 'done' and obj.user_id_done.id == 0:
                 obj.user_id_done = obj.env.uid  # Id actual

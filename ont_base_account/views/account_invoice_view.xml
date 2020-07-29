@@ -19,15 +19,15 @@
         <field name="model">account.invoice</field>
         <field name="inherit_id" ref="account.invoice_tree"/>
         <field name="arch" type="xml">
-            <field name="partner_id" position="after">	    	
-                <field name="inv_vat"/>
-	       </field>
+            <field name="partner_id" position="after">
+                <field name="inv_vat" />
+            </field>
             <field name="state" position="after">
-                <field name="partner_bank_name"/>
+                <field name="partner_bank_name" />
             </field>
             <field name="amount_total_signed" position="before">
-                <field name="amount_untaxed"/>
-                <field name="amount_tax"/>
+                <field name="amount_untaxed" />
+                <field name="amount_tax" />
             </field>            
         </field>
     </record>
@@ -37,9 +37,9 @@
         <field name="model">account.invoice</field>
         <field name="inherit_id" ref="account.invoice_supplier_tree"/>
         <field name="arch" type="xml">
-            <field name="partner_id" position="after">	    	
+            <field name="partner_id" position="after">
                 <field name="inv_vat"/>
-	       </field>
+            </field>
             <field name="state" position="after">
                 <field name="partner_bank_name"/>
             </field>

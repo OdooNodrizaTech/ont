@@ -2,18 +2,19 @@
 
 from odoo import api, models, fields
 
+
 class PurchaseOrder(models.Model):
     _inherit = 'purchase.order'
-        
+
     payment_mode_id = fields.Many2one(
-        comodel_name='account.payment.mode', 
+        comodel_name='account.payment.mode',
         string='Payment mode',
-        index=True        
+        index=True
     )
     user_id = fields.Many2one(
-        comodel_name='res.users', 
+        comodel_name='res.users',
         string='User',
-        index=True,  
+        index=True,
         default=lambda self: self.env.user
     )
 

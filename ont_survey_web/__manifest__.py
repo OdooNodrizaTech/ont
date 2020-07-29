@@ -3,7 +3,8 @@
 {
     "name": "Ont Survey Web",
     "version": "12.0.1.0.0",
-    "author": "Odoo Nodriza Tech (ONT)",
+    "author": "Odoo Nodriza Tech (ONT), "
+              "Odoo Community Association (OCA)",
     "website": "https://nodrizatech.com/",
     "category": "Tools",
     "license": "AGPL-3",
@@ -15,6 +16,8 @@
     "data": [
         "views/template.xml",
     ],
-    "qweb": ["static/src/xml/buttons.xml"],
+    "qweb": [
+        "static/src/xml/buttons.xml"
+    ],
     "installable": True
 }
