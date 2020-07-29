@@ -5,7 +5,7 @@ from odoo import api, models
 
 class PurchaseOrderLine(models.Model):
     _inherit = 'purchase.order.line'
-            
+
     @api.onchange('product_id')
     def onchange_product_id_override(self):
         if self.product_id:

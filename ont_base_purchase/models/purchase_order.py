@@ -5,7 +5,7 @@ from odoo import api, models, fields
 
 class PurchaseOrder(models.Model):
     _inherit = 'purchase.order'
-        
+
     payment_mode_id = fields.Many2one(
         comodel_name='account.payment.mode',
         string='Payment mode',

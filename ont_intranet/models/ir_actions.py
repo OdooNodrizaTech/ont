@@ -3,14 +3,14 @@
 from odoo import api, models
 
 
-class IrActionsAct_url(models.Model):
+class IrActionsActUrl(models.Model):
     _inherit = 'ir.actions.act_url'
-    
+
     @api.multi
     def read(self, fields=None, load='_classic_read'):
-        res_items = super(IrActionsAct_url, self).read(fields, load=load)
+        res_items = super(IrActionsActUrl, self).read(fields, load=load)
         if load == '_classic_read':
-            res_items = super(IrActionsAct_url, self).read(fields, load=load)
+            res_items = super(IrActionsActUrl, self).read(fields, load=load)
             key = 0
             for res_item in res_items:
                 if "intranet." in res_item['url']:

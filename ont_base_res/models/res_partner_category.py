@@ -4,9 +4,9 @@ from odoo import models, fields
 
 
 class ResPartnerCategory(models.Model):
-    _inherit = 'res.partner.category'    
+    _inherit = 'res.partner.category'
     _order = 'position'
-    
+
     position = fields.Integer(
         string='Position'
     )

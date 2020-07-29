@@ -6,7 +6,7 @@ from odoo import models, fields
 class AccountPaymentMode(models.Model):
     _inherit = 'account.payment.mode'
     _order = 'position'
-    
+
     position = fields.Integer(
         string='Position'
     )

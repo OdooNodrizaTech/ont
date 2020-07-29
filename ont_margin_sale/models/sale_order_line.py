@@ -10,8 +10,9 @@ class SaleOrderLine(models.Model):
         string='Margin %'
     )
     
-    @api.one
+    @api.multi
     def action_calculate_margin_percent(self):
+        self.ensure_one()
         self.margin_percent = 0
         if self.margin != 0 and self.price_subtotal > 0:
             margin_percent = (self.margin / self.price_subtotal) * 100

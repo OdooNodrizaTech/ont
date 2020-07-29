@@ -6,8 +6,9 @@ from odoo import api, fields, models
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
     
-    @api.one    
+    @api.multi
     def cron_action_regenerate_purchase_prices(self):
+        self.ensure_one()
         return_object = super(SaleOrder, self).cron_action_regenerate_purchase_prices()
         # invoices (regenerate_margin)
         if self.invoice_ids:

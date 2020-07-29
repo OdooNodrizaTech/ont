@@ -3,19 +3,21 @@
 from odoo import api, models, _
 from odoo.exceptions import Warning as UserError
 
+
 class MailComposer(models.TransientModel):
     _inherit = 'mail.compose.message'
-    
-    @api.one
+
+    @api.multi
     def check_limit_size_attachments(self):
-        limit_size_attachments = 1000000*10
-        total_size_attachments = 0
-        
+        self.ensure_one()
+        limit_size = 1000000*10
+        item_size = 0
+
         if self.attachment_ids:
             for attachment_id in self.attachment_ids:
-                total_size_attachments = total_size_attachments + attachment_id.file_size
+                item_size = item_size + attachment_id.file_size
         
-        if total_size_attachments >= limit_size_attachments:
+        if item_size >= limit_size:
             raise UserError(_('The maximum limit of email attachments is 10MB'))
     
     @api.multi

@@ -1,0 +1,1 @@
+Cosas respecto a pagos

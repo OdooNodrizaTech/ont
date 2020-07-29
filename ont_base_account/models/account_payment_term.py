@@ -6,7 +6,7 @@ from odoo import models, fields
 class AccountPaymentTerm(models.Model):
     _inherit = 'account.payment.term'
     _order = 'position'
-    
+
     position = fields.Integer(
         string='Position'
     )
@@ -14,6 +14,6 @@ class AccountPaymentTerm(models.Model):
         string='Selectable in orders'
     )
     payment_mode_id = fields.Many2many(
-        comodel_name='account.payment.mode', 
+        comodel_name='account.payment.mode',
         string='Payment modes',
     )

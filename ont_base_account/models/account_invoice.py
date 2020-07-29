@@ -14,7 +14,7 @@ class AccountInvoice(models.Model):
         compute='_compute_partner_bank_name',
         string='Bank name'
     )
-    
+
     @api.multi
     @api.depends('partner_bank_id')
     def _compute_partner_bank_name(self):
