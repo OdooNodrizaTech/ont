@@ -18,6 +18,7 @@
     ],
     "data": [
         "data/ir_cron.xml",
+        "views/account_account_view.xml",
         "views/account_asset_view.xml",
         "views/account_fiscal_position_view.xml",
         "views/account_invoice_view.xml",

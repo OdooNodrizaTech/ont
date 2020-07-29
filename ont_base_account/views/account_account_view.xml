@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="account_account_ont_form" model="ir.ui.view">
+        <field name="name">account.account.ont.form</field>
+        <field name="model">account.account</field>
+        <field name="inherit_id" ref="account.view_account_form" />
+        <field name="priority" eval="20"/>
+        <field name="arch" type="xml">
+            <field name="user_type_id" position="before">
+                <field name="custom_type"/>
+                <field name="custom_classification"/>
+            </field>
+        </field>
+    </record>
+    <record id="account_account_ont_list" model="ir.ui.view">
+        <field name="name">account.account.ont.list</field>
+        <field name="model">account.account</field>
+        <field name="inherit_id" ref="account.view_account_list" />
+        <field name="priority" eval="20"/>
+        <field name="arch" type="xml">
+            <field name="user_type_id" position="before">
+                <field name="custom_type"/>
+                <field name="custom_classification"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>
