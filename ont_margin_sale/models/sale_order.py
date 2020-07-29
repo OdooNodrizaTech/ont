@@ -45,13 +45,14 @@ class SaleOrder(models.Model):
                                             for quant in move_line.quant_ids:
                                                 # cost
                                                 if quant.cost > 0:
-                                                    order_lines[move_line.product_id.id][
-                                                        'purchase_price'
-                                                    ] = quant.cost
+                                                    order_lines[
+                                                        move_line.product_id.id
+                                                    ]['purchase_price'] = quant.cost
                                                 else:
-                                                    order_lines[move_line.product_id.id][
-                                                        'purchase_price'
-                                                    ] = (quant.inventory_value / quant.qty)
+                                                    order_lines[
+                                                        move_line.product_id.id
+                                                    ]['purchase_price'] =\
+                                                        (quant.inventory_value / quant.qty)
                 # operations
                 for order_line_key in order_lines:
                     if order_lines[order_line_key]['purchase_price'] == 0:
@@ -75,7 +76,10 @@ class SaleOrder(models.Model):
                             if order_line.qty_delivered > 0:
                                 margin_line = \
                                     order_line.price_subtotal - \
-                                    (order_line.purchase_price * order_line.qty_delivered)
+                                    (
+                                            order_line.purchase_price *
+                                            order_line.qty_delivered
+                                    )
                         # define
                         order_line.margin = "{:.2f}".format(margin_line)
                         # action_calculate_margin_percent

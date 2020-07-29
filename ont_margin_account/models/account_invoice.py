@@ -51,8 +51,11 @@ class AccountInvoice(models.Model):
                                     if item.invoice_line_id.product_id:
                                         margin_line = \
                                             line_id.price_subtotal - \
-                                            (item.invoice_line_id.product_id.standar_price
-                                             * line_id.quantity)
+                                            (
+                                                    item.invoice_line_id.
+                                                    product_id.standar_price
+                                                    * line_id.quantity
+                                            )
                                 # margin_line
                                 line_id.margin = "{:.2f}".format(margin_line)
                                 # action_calculate_margin_percent
@@ -86,7 +89,7 @@ class AccountInvoice(models.Model):
                                                 margin_line = \
                                                     line_id.price_subtotal -\
                                                     (purchase_price_line
-                                                     * invoice_line.quantity)
+                                                     * line_id.quantity)
                                         # margin_line
                                         line_id.margin = "{:.2f}".format(margin_line)
                                         # action_calculate_margin_percent

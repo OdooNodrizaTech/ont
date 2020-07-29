@@ -11,8 +11,8 @@ class SaleOrder(models.Model):
         allow_confirm = True
         # check
         for item in self:
-            if itemamount_total > 0:
-                if not itempartner_invoice_id.vat:
+            if item.amount_total > 0:
+                if not item.partner_invoice_id.vat:
                     allow_confirm = False
                     raise UserError(_("It is necessary to define "
                                       "the VAT for the billing "
