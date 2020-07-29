@@ -14,22 +14,22 @@ class AccountAsset(models.Model):
 
     @api.multi
     def _compute_depreciated_value(self):
-        self.ensure_one()
-        self.depreciated_value = 0
-        if self.depreciation_line_ids:
-            for depreciation_line_id in self.depreciation_line_ids:
-                if depreciation_line_id.move_id:
-                    if depreciation_line_id.move_id.state == 'posted':
-                        self.depreciated_value += depreciation_line_id.amount
+        for item in self:
+            item.depreciated_value = 0
+            if item.depreciation_line_ids:
+                for line_id in item.depreciation_line_ids:
+                    if line_id.move_id:
+                        if line_id.move_id.state == 'posted':
+                            item.depreciated_value += line_id.amount
 
     @api.multi
     def set_to_close(self):
         for item in self:
             if item.state != 'close':
                 if item.depreciation_line_ids:
-                    for depreciation_line_id in item.depreciation_line_ids:
+                    for line_id in item.depreciation_line_ids:
                         if item.state != 'close':
-                            depreciation_line_id.post_lines_and_close_asset()
+                            line_id.post_lines_and_close_asset()
 
         return super(AccountAsset, self).set_to_close()
 

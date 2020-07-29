@@ -6,9 +6,11 @@ from odoo import api, models
 class PurchaseOrderLine(models.Model):
     _inherit = 'purchase.order.line'
 
+    @api.multi
     @api.onchange('product_id')
     def onchange_product_id_override(self):
-        if self.product_id:
-            if self.product_id.default_code:
-                if self.product_id.default_code in self.name:
-                    self.name = self.name.split(']')[1]
+        for item in self:
+            if item.product_id:
+                if item.product_id.default_code:
+                    if item.product_id.default_code in item.name:
+                        item.name = item.name.split(']')[1]
