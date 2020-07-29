@@ -80,9 +80,9 @@ class AccountInvoice(models.Model):
                                                     == line_id.product_id.id:
                                                 # buscamos el coste del PV del que viene
                                                 purchase_price_line = 0
-                                                for sale_line_id in org_line.sale_line_ids:
+                                                for s_line_id in org_line.sale_line_ids:
                                                     purchase_price_line = \
-                                                        sale_line_id.purchase_price
+                                                        s_line_id.purchase_price
                                                 # calculamos el margen de esta linea
                                                 margin_line = \
                                                     line_id.price_subtotal -\
