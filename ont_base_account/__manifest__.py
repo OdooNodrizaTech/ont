@@ -9,6 +9,7 @@
     'license': 'AGPL-3',
     'depends': ['base', 'account', 'sale'],
     'data': [
+        'views/account_account_view.xml',
         'views/account_asset_asset.xml',
         'views/account_fiscal_position.xml',
         'views/account_invoice.xml',
