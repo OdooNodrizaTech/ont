@@ -12,6 +12,7 @@
         "base",
         "account",
         "sale",
+        "account_payment_mode",  # https://github.com/OCA/bank-payment
         "account_asset_management",  # https://github.com/OCA/account-financial-tools
         "crm_claim"  # https://github.com/OCA/crm
     ],
