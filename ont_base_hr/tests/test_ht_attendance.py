@@ -11,7 +11,7 @@ class TestHrAttendance(common.TransactionCase):
         # create attendance_1
         self.attendance_1 = self._create_hr_attendance(1, '2020-01-01', False)
         # create attendance_2
-        self.attendance_2 = self._create_hr_attendance(1, '2020-01-01', False)        
+        self.attendance_2 = self._create_hr_attendance(1, '2020-01-01', False)
 
     def _create_hr_attendance(self, employee_id, check_in, check_out):
         hr_attendance = self.ht_attendance_model.create({

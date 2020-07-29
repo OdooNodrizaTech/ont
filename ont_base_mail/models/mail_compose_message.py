@@ -16,10 +16,10 @@ class MailComposer(models.TransientModel):
         if self.attachment_ids:
             for attachment_id in self.attachment_ids:
                 item_size = item_size + attachment_id.file_size
-        
+
         if item_size >= limit_size:
             raise UserError(_('The maximum limit of email attachments is 10MB'))
-    
+
     @api.multi
     @api.onchange('attachment_ids', 'template_id')
     def onchange_attachment_ids(self):

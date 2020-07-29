@@ -5,11 +5,11 @@ from odoo import api, models, fields
 
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
-        
+
     margin_percent = fields.Float(
         string='Margin %'
     )
-    
+
     @api.multi
     def action_calculate_margin_percent(self):
         self.ensure_one()

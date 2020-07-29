@@ -9,7 +9,7 @@ class AccountBankStatementLine(models.Model):
     @api.multi
     def get_move_lines_for_reconciliation_widget(self,
                                                  excluded_ids=None,
-                                                 str=False,
+                                                 str=None,
                                                  offset=0,
                                                  limit=None
                                                  ):

@@ -21,8 +21,9 @@ class AccountInvoice(models.Model):
             margin_percent = (self.margin / self.amount_untaxed) * 100
             self.margin_percent = "{:.2f}".format(margin_percent)
 
-    @api.one
+    @api.multi
     def action_invoice_open(self):
+        self.ensure_one()
         self.action_regenerate_margin()
         return super(AccountInvoice, self).action_invoice_open()
 
@@ -71,16 +72,21 @@ class AccountInvoice(models.Model):
                                 for invoice_line in self.invoice_line_ids:
                                     margin_line = 0
                                     # search in origin invoice
-                                    for org_invoice_line in org_invoice.invoice_line_ids:
-                                        if org_invoice_line.product_id.id == invoice_line.product_id.id:
+                                    for org_invoice_line \
+                                            in org_invoice.invoice_line_ids:
+                                        if org_invoice_line.product_id.id \
+                                                == invoice_line.product_id.id:
                                             # buscamos el coste del PV del que viene
                                             purchase_price_line = 0
-                                            for sale_line_id in org_invoice_line.sale_line_ids:
-                                                purchase_price_line = sale_line_id.purchase_price
+                                            for sale_line_id \
+                                                    in org_invoice_line.sale_line_ids:
+                                                purchase_price_line = \
+                                                    sale_line_id.purchase_price
                                             # calculamos el margen de esta linea
                                             margin_line = \
                                                 invoice_line.price_subtotal -\
-                                                (purchase_price_line * invoice_line.quantity)
+                                                (purchase_price_line
+                                                 * invoice_line.quantity)
                                     # margin_line
                                     invoice_line.margin = "{:.2f}".format(margin_line)
                                     # action_calculate_margin_percent

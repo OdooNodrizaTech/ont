@@ -7,13 +7,13 @@ class AccountAsset(models.Model):
     _inherit = 'account.asset'
 
     depreciated_value = fields.Float(
-        compute='_depreciated_value',
+        compute='_compute_depreciated_value',
         string='Depreciated value',
         store=False
     )
 
     @api.multi
-    def _depreciated_value(self):
+    def _compute_depreciated_value(self):
         self.ensure_one()
         self.depreciated_value = 0
         if self.depreciation_line_ids:

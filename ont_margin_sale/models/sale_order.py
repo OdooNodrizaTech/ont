@@ -48,10 +48,13 @@ class SaleOrder(models.Model):
                                                 order_lines[move_line.product_id.id][
                                                     'purchase_price'
                                                 ] = quant_id.cost
-                                            else: 
+                                            else:
                                                 order_lines[move_line.product_id.id][
                                                     'purchase_price'
-                                                ] = (quant_id.inventory_value/quant_id.qty)
+                                                ] = (
+                                                        quant_id.inventory_value /
+                                                        quant_id.qty
+                                                )
             # operations
             for order_line_key in order_lines:
                 if order_lines[order_line_key]['purchase_price'] == 0:
@@ -79,15 +82,15 @@ class SaleOrder(models.Model):
                     # define
                     order_line.margin = "{:.2f}".format(margin_line)
                     # action_calculate_margin_percent
-                    order_line.action_calculate_margin_percent()                    
+                    order_line.action_calculate_margin_percent()
                     # margin_order
                     margin_order += order_line.margin
             # margin
             self.margin = "{:.2f}".format(margin_order)
             # action_calculate_margin_percent
-            self.action_calculate_margin_percent()            
-    
-    @api.model    
+            self.action_calculate_margin_percent()
+
+    @api.model
     def cron_action_regenerate_purchase_prices_send_orders(self):
         current_date = datetime.today()
         start_date = current_date + relativedelta(months=-1)
@@ -99,32 +102,18 @@ class SaleOrder(models.Model):
                 ('confirmation_date', '>=', start_date.strftime("%Y-%m-%d")),
                 ('confirmation_date', '<=', end_date.strftime("%Y-%m-%d"))
             ]
-        )        
+        )
         for item in items:
             item.action_regenerate_purchase_prices()
 
-    @api.model    
+    @api.model
     def cron_action_regenerate_purchase_prices_all(self):
         # general
         items = self.env['sale.order'].search(
             [
-                ('state', 'in', ('sale','done')),
+                ('state', 'in', ('sale', 'done')),
                 ('confirmation_date', '>', '2017-12-31'),  # Fix keep calm sage orders
             ]
         )
         for item in items:
             item.action_regenerate_purchase_prices()
-        '''
-        #exception (sage)
-        items = self.env['sale.order'].search(
-            [
-                ('state', 'in', ('sale', 'done')),
-                ('confirmation_date', '<=', '2017-12-31'),  # Fix sage
-            ]
-        )
-        for item in items:
-            if item in.invoice_ids:
-                for invoice_id in item in.invoice_ids:
-                    #action_regenerate_margin (invoice_id)
-                    invoice_id.action_regenerate_margin()
-        '''                    

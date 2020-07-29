@@ -17,7 +17,6 @@
     "data": [
         "views/survey_user_input_view.xml",
         "views/survey_result_matrix.xml",
-    ],        
+    ],
     "installable": True
 }
-
