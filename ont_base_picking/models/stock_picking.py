@@ -51,17 +51,17 @@ class StockPicking(models.Model):
 
     @api.multi
     def _create_backorder(self, backorder_moves):
-        for obj in self:
-            if obj.state == 'done' and obj.user_id_done.id == 0:
-                obj.user_id_done = obj.env.uid  # Id actual
+        for item in self:
+            if item.state == 'done' and item.user_id_done.id == 0:
+                item.user_id_done = item.env.uid  # Id actual
         # return
         return super(StockPicking, self)._create_backorder(backorder_moves)
 
     @api.multi
     def _add_delivery_cost_to_so(self):
-        for obj in self:
-            if obj.sale_id:
-                if obj.carrier_id:
-                    obj.sale_id.carrier_id = obj.carrier_id.id
+        for item in self:
+            if item.sale_id:
+                if item.carrier_id:
+                    item.sale_id.carrier_id = item.carrier_id.id
         # return
         return super(StockPicking, self)._add_delivery_cost_to_so()

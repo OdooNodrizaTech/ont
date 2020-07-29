@@ -8,11 +8,10 @@ class SaleOrder(models.Model):
 
     @api.multi
     def cron_action_regenerate_purchase_prices(self):
-        self.ensure_one()
         return_object = super(SaleOrder, self).cron_action_regenerate_purchase_prices()
-        # invoices (regenerate_margin)
-        if self.invoice_ids:
-            for invoice_id in self.invoice_ids:
-                invoice_id.action_regenerate_margin()
+        for item in self:
+            if item.invoice_ids:
+                for invoice_id in item.invoice_ids:
+                    invoice_id.action_regenerate_margin()
         # return
         return return_object

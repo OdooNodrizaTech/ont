@@ -18,13 +18,13 @@ class AccountInvoice(models.Model):
     @api.multi
     @api.depends('partner_bank_id')
     def _compute_partner_bank_name(self):
-        self.ensure_one()
-        self.partner_bank_name = ''
-        if self.partner_bank_id:
-            if self.partner_bank_id.bank_id:
-                self.partner_bank_name = "%s %s" % (
-                    self.partner_bank_id.bank_id.name,
-                    self.partner_bank_id.acc_number[-4:]
-                )
-            else:
-                self.partner_bank_name = self.partner_bank_id.acc_number
+        for item in self:
+            item.partner_bank_name = ''
+            if item.partner_bank_id:
+                if item.partner_bank_id.bank_id:
+                    item.partner_bank_name = "%s %s" % (
+                        item.partner_bank_id.bank_id.name,
+                        item.partner_bank_id.acc_number[-4:]
+                    )
+                else:
+                    item.partner_bank_name = item.partner_bank_id.acc_number
