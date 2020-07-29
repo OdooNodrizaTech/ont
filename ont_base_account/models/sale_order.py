@@ -15,7 +15,7 @@ class SaleOrder(models.Model):
     def action_confirm(self):
         allow_action_confirm = True
         for item in self:
-            if item.amount_total > 0 and item.claim == False:
+            if item.amount_total > 0 and not item.claim:
                 payment_mode_ids_allow = []
                 for payment_mode_id in item.payment_term_id.payment_mode_id:
                     payment_mode_ids_allow.append(payment_mode_id.id)
@@ -24,5 +24,5 @@ class SaleOrder(models.Model):
                     allow_action_confirm = False
                     raise UserError(_("The payment method is incompatible with the payment term"))
 
-        if allow_action_confirm == True:
+        if allow_action_confirm:
             return super(SaleOrder, self).action_confirm()

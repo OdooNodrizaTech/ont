@@ -1,6 +1,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from openerp import api, models
+from odoo import api, models
+
 
 class PurchaseOrderLine(models.Model):
     _inherit = 'purchase.order.line'
@@ -10,5 +11,4 @@ class PurchaseOrderLine(models.Model):
         if self.product_id:
             if self.product_id.default_code:
                 if self.product_id.default_code in self.name:
-                    name_split = self.name.split(']')
-                    self.name = name_split[1]
+                    self.name = self.name.split(']')[1]

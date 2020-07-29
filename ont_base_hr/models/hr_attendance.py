@@ -1,13 +1,11 @@
-# -*- coding: utf-8 -*-
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
-from odoo import api, fields, models
 
-import logging
-_logger = logging.getLogger(__name__)
+from odoo import api, models
+
 
 class HrAttendance(models.Model):
-    _inherit = 'hr.attendance'    
-    
+    _inherit = 'hr.attendance'
+
     @api.model
     def create(self, values):
         allow_create = True
@@ -21,7 +19,7 @@ class HrAttendance(models.Model):
             )
             if hr_attendance_ids:
                 allow_create = False
-        
+
         if allow_create:
             return_create = super(HrAttendance, self).create(values)
-            return return_create                              
+            return return_create

@@ -1,6 +1,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+
 from odoo import api, models, _
-from openerp.exceptions import Warning
+from odoo.exceptions import Warning as UserError
 
 class MailComposer(models.TransientModel):
     _inherit = 'mail.compose.message'
@@ -14,11 +15,11 @@ class MailComposer(models.TransientModel):
             for attachment_id in self.attachment_ids:
                 total_size_attachments = total_size_attachments + attachment_id.file_size
         
-        if total_size_attachments>=limit_size_attachments:    
-            raise Warning(_('The maximum limit of email attachments is 10MB'))
+        if total_size_attachments >= limit_size_attachments:
+            raise UserError(_('The maximum limit of email attachments is 10MB'))
     
     @api.multi
-    @api.onchange('attachment_ids','template_id')
+    @api.onchange('attachment_ids', 'template_id')
     def onchange_attachment_ids(self):
-        for model_item in self:
-            model_item.check_limit_size_attachments()            
+        self.ensure_one()
+        self.check_limit_size_attachments()

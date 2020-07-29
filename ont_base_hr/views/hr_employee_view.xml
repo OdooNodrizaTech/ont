@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+
     <record id="ont_view_hr_employee" model="ir.ui.view">
         <field name="name">ont_view_hr_employee</field>
         <field name="model">hr.employee</field>
@@ -21,4 +22,5 @@
             </xpath>
         </field>
     </record>
+
 </odoo>

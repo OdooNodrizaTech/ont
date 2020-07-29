@@ -1,8 +1,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 import logging
-_logger = logging.getLogger(__name__)
-
 from odoo import api, models, fields
+
 
 class AccountAsset(models.Model):
     _inherit = 'account.asset'
@@ -16,7 +15,7 @@ class AccountAsset(models.Model):
     @api.one        
     def _depreciated_value(self):
         self.depreciated_value = 0
-        if len(self.depreciation_line_ids) > 0:
+        if self.depreciation_line_ids:
             for depreciation_line_id in self.depreciation_line_ids:
                 if depreciation_line_id.move_id:
                     if depreciation_line_id.move_id.state == 'posted':
@@ -26,7 +25,7 @@ class AccountAsset(models.Model):
     def set_to_close(self):
         for item in self:
             if item.state != 'close':
-                if len(item.depreciation_line_ids) > 0:
+                if item.depreciation_line_ids:
                     for depreciation_line_id in item.depreciation_line_ids:
                         if item.state != 'close':
                             depreciation_line_id.post_lines_and_close_asset()                
@@ -35,6 +34,12 @@ class AccountAsset(models.Model):
 
     @api.model
     def _cron_generate_entries(self):
-        _logger.info('_cron_generate_entries')
-        assets = self.env['account.asset'].search([('state', '=', 'open')])
-        created_move_ids, error_log = assets._compute_entries(fields.Date.today(), check_triggers=True)
+        items = self.env['account.asset'].search(
+            [
+                ('state', '=', 'open')
+            ]
+        )
+        created_move_ids, error_log = items._compute_entries(
+            fields.Date.today(),
+            check_triggers=True
+        )

@@ -2,6 +2,7 @@
 
 from odoo import api, models
 
+
 class IrActionsAct_url(models.Model):
     _inherit = 'ir.actions.act_url'
     
@@ -11,13 +12,19 @@ class IrActionsAct_url(models.Model):
         if load == '_classic_read':
             res_items = super(IrActionsAct_url, self).read(fields, load=load)
             key = 0
-            for res_item in res_items:                
+            for res_item in res_items:
                 if "intranet." in res_item['url']:
-                    if "?" in res_item['url']:                                    
-                        res_items[key]['url'] = res_item['url']+"&odoo_password_crypt="+self.env.user.password_crypt
+                    if "?" in res_item['url']:
+                        res_items[key]['url'] = "%s&odoo_password_crypt=%s" % (
+                            res_item['url'],
+                            self.env.user.password_crypt
+                        )
                     else:
-                        res_items[key]['url'] = res_item['url']+"?odoo_password_crypt="+self.env.user.password_crypt
-                    
+                        res_items[key]['url'] = "%s?odoo_password_crypt=%s" % (
+                            res_item['url'],
+                            self.env.user.password_crypt
+                        )
+
                 key = key + 1
-                
-        return res_items                                                                                                                                              
+
+        return res_items

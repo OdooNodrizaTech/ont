@@ -2,19 +2,20 @@
 
 from odoo import api, models, fields
 
+
 class AccountInvoice(models.Model):
     _inherit = 'account.invoice'
         
-    margin = fields.Float( 
+    margin = fields.Float(
         string='Margin'
     )
-    margin_percent = fields.Float( 
+    margin_percent = fields.Float(
         string='Margin %'
     )
     
     @api.one
     def action_calculate_margin_percent(self):
-        self.margin_percent = 0                    
+        self.margin_percent = 0
         if self.margin != 0 and self.amount_untaxed > 0:
             margin_percent = (self.margin / self.amount_untaxed) * 100
             self.margin_percent = "{:.2f}".format(margin_percent)
@@ -45,7 +46,9 @@ class AccountInvoice(models.Model):
                                     margin_line += sale_line_id.margin
                             else:
                                 if self.invoice_line_id.product_id:
-                                    margin_line = invoice_line_id.price_subtotal - (self.invoice_line_id.product_id.standar_price * invoice_line_id.quantity)
+                                    margin_line = \
+                                        invoice_line_id.price_subtotal - \
+                                        (self.invoice_line_id.product_id.standar_price * invoice_line_id.quantity)
                             # margin_line
                             invoice_line_id.margin = "{:.2f}".format(margin_line)
                             # action_calculate_margin_percent
@@ -54,7 +57,11 @@ class AccountInvoice(models.Model):
                             margin += margin_line
                     else:# out_refund
                         if self.origin:
-                            account_invoice_ids = self.env['account.invoice'].search([('number', '=', self.origin)])
+                            account_invoice_ids = self.env['account.invoice'].search(
+                                [
+                                    ('number', '=', self.origin)
+                                ]
+                            )
                             if account_invoice_ids:
                                 origin_invoice_id = account_invoice_ids[0]
                                 # invoice_line_ids
@@ -62,13 +69,15 @@ class AccountInvoice(models.Model):
                                     margin_line = 0
                                     # search in origin invoice
                                     for origin_invoice_line_id in origin_invoice_id.invoice_line_ids:
-                                        if origin_invoice_line_id.product_id.id==invoice_line_id.product_id.id:
+                                        if origin_invoice_line_id.product_id.id == invoice_line_id.product_id.id:
                                             # buscamos el coste del PV del que viene
                                             purchase_price_line = 0                                            
                                             for sale_line_id in origin_invoice_line_id.sale_line_ids:
                                                 purchase_price_line = sale_line_id.purchase_price
                                             # calculamos el margen de esta linea
-                                            margin_line = invoice_line_id.price_subtotal - (purchase_price_line * invoice_line_id.quantity)
+                                            margin_line = \
+                                                invoice_line_id.price_subtotal -\
+                                                (purchase_price_line * invoice_line_id.quantity)
                                     # margin_line
                                     invoice_line_id.margin = "{:.2f}".format(margin_line)
                                     # action_calculate_margin_percent
@@ -78,4 +87,4 @@ class AccountInvoice(models.Model):
                     # margin
                     self.margin = "{:.2f}".format(margin)
                     # action_calculate_margin_percent
-                    self.action_calculate_margin_percent()                    
+                    self.action_calculate_margin_percent()

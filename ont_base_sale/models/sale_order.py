@@ -13,7 +13,8 @@ class SaleOrder(models.Model):
             if obj.amount_total > 0:
                 if obj.partner_invoice_id.vat == False:
                     allow_confirm = False
-                    raise UserError(_("It is necessary to define the VAT for the billing address before validating the sales order"))
+                    raise UserError(_("It is necessary to define the VAT for "
+                                      "the billing address before validating the sales order"))
         # allow_confirm
         if allow_confirm:
             return super(SaleOrder, self).action_confirm()

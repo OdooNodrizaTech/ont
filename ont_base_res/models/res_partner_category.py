@@ -1,6 +1,6 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import api, models, fields
+from odoo import models, fields
 
 
 class ResPartnerCategory(models.Model):
@@ -9,4 +9,4 @@ class ResPartnerCategory(models.Model):
     
     position = fields.Integer(
         string='Position'
-    ) 
+    )

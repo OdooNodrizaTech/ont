@@ -12,4 +12,7 @@ class SaleOrder(models.Model):
 
     def _create_delivery_line(self, carrier, price_unit):
         if price_unit > 0:
-            return super(SaleOrder, self)._create_delivery_line(carrier, price_unit)
+            return super(SaleOrder, self)._create_delivery_line(
+                carrier,
+                price_unit
+            )
