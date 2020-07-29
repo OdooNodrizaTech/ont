@@ -42,19 +42,16 @@ class SaleOrder(models.Model):
                             if picking_id.move_lines:
                                 for move_line in picking_id.move_lines:
                                     if move_line.quant_ids:
-                                        for quant_id in move_line.quant_ids:
+                                        for quant in move_line.quant_ids:
                                             # cost
-                                            if quant_id.cost > 0:
+                                            if quant.cost > 0:
                                                 order_lines[move_line.product_id.id][
                                                     'purchase_price'
-                                                ] = quant_id.cost
+                                                ] = quant.cost
                                             else:
                                                 order_lines[move_line.product_id.id][
                                                     'purchase_price'
-                                                ] = (
-                                                        quant_id.inventory_value /
-                                                        quant_id.qty
-                                                )
+                                                ] = (quant.inventory_value /quant.qty)
             # operations
             for order_line_key in order_lines:
                 if order_lines[order_line_key]['purchase_price'] == 0:
