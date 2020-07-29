@@ -51,7 +51,7 @@ class SaleOrder(models.Model):
                                             else:
                                                 order_lines[move_line.product_id.id][
                                                     'purchase_price'
-                                                ] = (quant.inventory_value /quant.qty)
+                                                ] = (quant.inventory_value / quant.qty)
             # operations
             for order_line_key in order_lines:
                 if order_lines[order_line_key]['purchase_price'] == 0:
