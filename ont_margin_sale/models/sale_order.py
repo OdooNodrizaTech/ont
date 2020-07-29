@@ -51,7 +51,7 @@ class SaleOrder(models.Model):
                                                 else:
                                                     order_lines[
                                                         move_line.product_id.id
-                                                    ]['purchase_price'] =\
+                                                    ]['purchase_price'] = \
                                                         (quant.inventory_value / quant.qty)
                 # operations
                 for order_line_key in order_lines:
@@ -77,8 +77,8 @@ class SaleOrder(models.Model):
                                 margin_line = \
                                     order_line.price_subtotal - \
                                     (
-                                            order_line.purchase_price *
-                                            order_line.qty_delivered
+                                        order_line.purchase_price *
+                                        order_line.qty_delivered
                                     )
                         # define
                         order_line.margin = "{:.2f}".format(margin_line)

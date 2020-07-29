@@ -52,9 +52,9 @@ class AccountInvoice(models.Model):
                                         margin_line = \
                                             line_id.price_subtotal - \
                                             (
-                                                    item.invoice_line_id.
-                                                    product_id.standar_price
-                                                    * line_id.quantity
+                                                item.invoice_line_id.
+                                                product_id.standar_price
+                                                * line_id.quantity
                                             )
                                 # margin_line
                                 line_id.margin = "{:.2f}".format(margin_line)
@@ -75,14 +75,12 @@ class AccountInvoice(models.Model):
                                     for line_id in item.invoice_line_ids:
                                         margin_line = 0
                                         # search in origin invoice
-                                        for org_invoice_line \
-                                                in org_invoice.invoice_line_ids:
-                                            if org_invoice_line.product_id.id \
+                                        for org_line in org_invoice.invoice_line_ids:
+                                            if org_line.product_id.id \
                                                     == line_id.product_id.id:
                                                 # buscamos el coste del PV del que viene
                                                 purchase_price_line = 0
-                                                for sale_line_id \
-                                                        in org_invoice_line.sale_line_ids:
+                                                for sale_line_id in org_line.sale_line_ids:
                                                     purchase_price_line = \
                                                         sale_line_id.purchase_price
                                                 # calculamos el margen de esta linea
