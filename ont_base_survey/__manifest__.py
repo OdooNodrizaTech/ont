@@ -11,7 +11,8 @@
     "depends": [
         "base",
         "sale",
-        "survey"
+        "survey",
+        "survey_extra"
     ],
     "data": [
         "views/survey_user_input_view.xml",
