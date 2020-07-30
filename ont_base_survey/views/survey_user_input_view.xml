@@ -7,8 +7,8 @@
         <field name="inherit_id" ref="survey.survey_user_input_form"/>
         <field name="arch" type="xml">
             <field name="token" position="after">
-                <field name="call_tried" />
-                <field name="date_next_tried" />
+                <field name="call_tried" attrs="{'invisible': [('survey_id_survey_type','!=','phone')]}" />
+                <field name="date_next_tried" attrs="{'invisible': [('survey_id_survey_type','!=','phone')]}" />
             </field>
         </field>
     </record>
