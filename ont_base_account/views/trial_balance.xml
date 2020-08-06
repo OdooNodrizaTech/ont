@@ -5,26 +5,30 @@
               customize_show="True"
               inherit_id="account_financial_report.report_trial_balance_lines_header"
               priority="20">
-        <t t-if="not show_partner_details">
-            <xpath expr="//div[@class='act_as_row'][1][@class='act_as_cell'][2]" position="replace">
+        <xpath expr="//div[hasclass('act_as_thead')]/div[hasclass('act_as_row')]/t[@t-if='not show_partner_details']/div[hasclass('act_as_cell')][2]" position="replace">
                 <div class="act_as_cell" style="width: 27.58%;">Account</div>
                 <div class="act_as_cell" style="width: 5%;">Type</div>
                 <div class="act_as_cell" style="width: 5%;">Clasification</div>
-            </xpath>
-        </t>
+        </xpath>
     </template>
     <template id="ont_base_account_report_trial_balance_line"
               name="ont_base_account_report_trial_balance_line"
               customize_show="True"
               inherit_id="account_financial_report.report_trial_balance_line"
               priority="20">
-        <t t-if="not show_partner_details">
-            <xpath expr="//div[@class='act_as_cell'][1]" position="after">
+        <xpath expr="//div[hasclass('act_as_cell', 'amount')][1]" position="before">
+            <t t-if="not show_partner_details">
                 <div class="act_as_cell left">
-                    <t t-set="account_custom_type" t-value="'line.account_id.custom_type'"/>
-                    <t t-set="account_custom_classification" t-value="'line.account_id.custom_classification'"/>
+                    <t t-if="line.account_id">
+                      <span t-field="line.account_id.custom_type" />
+                    </t>
                 </div>
-            </xpath>
-        </t>
+                <div class="act_as_cell left">
+                    <t t-if="line.account_id">
+                      <span t-field="line.account_id.custom_classification" />
+                    </t>
+                </div>
+            </t>
+        </xpath>
     </template>
 </odoo>

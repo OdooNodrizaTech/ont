@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 12.0-20200601\n"
+"Project-Id-Version: Odoo Server 12.0-20200603\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-16 10:38+0000\n"
-"PO-Revision-Date: 2020-07-16 10:38+0000\n"
+"POT-Creation-Date: 2020-08-06 11:52+0000\n"
+"PO-Revision-Date: 2020-08-06 11:52+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,19 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: ont_base_account
+#: model:ir.model,name:ont_base_account.model_account_account
+#: model_terms:ir.ui.view,arch_db:ont_base_account.ont_base_account_report_trial_balance_lines_header
+msgid "Account"
+msgstr ""
+
+#. module: ont_base_account
 #: model_terms:ir.ui.view,arch_db:ont_base_account.account_move_line_ont_pivot
 msgid "Account Move Lines"
+msgstr ""
+
+#. module: ont_base_account
+#: selection:account.account,custom_classification:0
+msgid "Amortizacion"
 msgstr ""
 
 #. module: ont_base_account
@@ -31,6 +42,16 @@ msgid "Asset"
 msgstr ""
 
 #. module: ont_base_account
+#: model:ir.model,name:ont_base_account.model_account_asset_asset
+msgid "Asset/Revenue Recognition"
+msgstr ""
+
+#. module: ont_base_account
+#: model:ir.model,name:ont_base_account.model_res_partner_bank
+msgid "Bank Accounts"
+msgstr ""
+
+#. module: ont_base_account
 #: model:ir.model,name:ont_base_account.model_account_bank_statement_line
 msgid "Bank Statement Line"
 msgstr ""
@@ -41,13 +62,38 @@ msgid "Bank name"
 msgstr ""
 
 #. module: ont_base_account
+#: model:ir.model.fields,field_description:ont_base_account.field_account_account__custom_classification
+msgid "Clasificacion"
+msgstr ""
+
+#. module: ont_base_account
+#: model_terms:ir.ui.view,arch_db:ont_base_account.ont_base_account_report_trial_balance_lines_header
+msgid "Clasification"
+msgstr ""
+
+#. module: ont_base_account
 #: model_terms:ir.ui.view,arch_db:ont_base_account.account_move_line_ont_filter
 msgid "Debe"
 msgstr ""
 
 #. module: ont_base_account
-#: model:ir.model.fields,field_description:ont_base_account.field_account_asset__depreciated_value
+#: model:ir.model.fields,field_description:ont_base_account.field_account_asset_asset_depreciated_value
 msgid "Depreciated value"
+msgstr ""
+
+#. module: ont_base_account
+#: selection:account.account,custom_classification:0
+msgid "Estructural"
+msgstr ""
+
+#. module: ont_base_account
+#: selection:account.account,custom_type:0
+msgid "Fijo"
+msgstr ""
+
+#. module: ont_base_account
+#: selection:account.account,custom_classification:0
+msgid "Financiero"
 msgstr ""
 
 #. module: ont_base_account
@@ -68,13 +114,33 @@ msgid "Haber"
 msgstr ""
 
 #. module: ont_base_account
+#: selection:account.account,custom_classification:0
+msgid "Inversion minoritaria"
+msgstr ""
+
+#. module: ont_base_account
 #: model:ir.model,name:ont_base_account.model_account_invoice
 msgid "Invoice"
 msgstr ""
 
 #. module: ont_base_account
+#: model:ir.model,name:ont_base_account.model_account_invoice_line
+msgid "Invoice Line"
+msgstr ""
+
+#. module: ont_base_account
 #: model:ir.model.fields,field_description:ont_base_account.field_account_fiscal_position__invoice_description
 msgid "Invoice description"
+msgstr ""
+
+#. module: ont_base_account
+#: selection:account.account,custom_classification:0
+msgid "Marketing"
+msgstr ""
+
+#. module: ont_base_account
+#: selection:account.account,custom_classification:0
+msgid "Otro"
 msgstr ""
 
 #. module: ont_base_account
@@ -100,8 +166,13 @@ msgid "Payment modes"
 msgstr ""
 
 #. module: ont_base_account
-#: model:ir.model.fields,field_description:ont_base_account.field_account_payment_mode__position
-#: model:ir.model.fields,field_description:ont_base_account.field_account_payment_term__position
+#: selection:account.account,custom_classification:0
+msgid "Personal"
+msgstr ""
+
+#. module: ont_base_account
+#: model:ir.model.fields,field_description:ont_base_account.field_account_payment_mode_position
+#: model:ir.model.fields,field_description:ont_base_account.field_account_payment_term_position
 msgid "Position"
 msgstr ""
 
@@ -136,10 +207,15 @@ msgid "The Tax Identification Number. Complete it if the contact is subjected to
 msgstr ""
 
 #. module: ont_base_account
-#: code:addons/ont_base_account/models/sale_order.py:25
-#: code:addonsOdooNodrizaTech/ont/12.0/ont_base_account/models/sale_order.py:25
+#: code:addons/ont_base_account/models/sale_order.py:26
+#: code:addonsOdooNodrizaTech/ont/12.0/ont_base_account/models/sale_order.py:26
 #, python-format
 msgid "The payment method is incompatible with the payment term"
+msgstr ""
+
+#. module: ont_base_account
+#: model:ir.model.fields,field_description:ont_base_account.field_account_account__custom_type
+msgid "Tipo (fijo o variable)"
 msgstr ""
 
 #. module: ont_base_account
@@ -154,7 +230,22 @@ msgid "Total Balance"
 msgstr ""
 
 #. module: ont_base_account
+#: selection:account.account,custom_classification:0
+msgid "Transporte"
+msgstr ""
+
+#. module: ont_base_account
+#: model_terms:ir.ui.view,arch_db:ont_base_account.ont_base_account_report_trial_balance_lines_header
+msgid "Type"
+msgstr ""
+
+#. module: ont_base_account
 #: model:ir.model.fields,field_description:ont_base_account.field_account_invoice__inv_vat
 msgid "VAT"
+msgstr ""
+
+#. module: ont_base_account
+#: selection:account.account,custom_type:0
+msgid "Variable"
 msgstr ""
 
