@@ -14,6 +14,7 @@
         "sale",
         "account_payment_mode",  # https://github.com/OCA/bank-payment
         "account_asset_management",  # https://github.com/OCA/account-financial-tools
+        "account_financial_report",  # github.com/OCA/account-financial-reporting
         "crm_claim"  # https://github.com/OCA/crm
     ],
     "data": [
@@ -27,6 +28,7 @@
         "views/account_payment_mode_view.xml",
         "views/account_payment_term_view.xml",
         "views/sale_order_view.xml",
+        "views/trial_balance.xml",
     ],
     "installable": True
 }
