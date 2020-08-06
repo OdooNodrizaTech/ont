@@ -7,7 +7,12 @@
     'website': 'https://nodrizatech.com/',
     'category': 'Tools',
     'license': 'AGPL-3',
-    'depends': ['base', 'account', 'sale'],
+    'depends': [
+        'base',
+        'account',
+        'sale',
+        "account_financial_report_qweb",  # github.com/OCA/account-financial-reporting
+    ],
     'data': [
         'views/account_account_view.xml',
         'views/account_asset_asset.xml',
@@ -18,6 +23,7 @@
         'views/account_payment_mode.xml',
         'views/account_payment_term.xml',
         'views/sale_order.xml',
+        "views/trial_balance.xml",
     ],
     'installable': True,
     'auto_install': False,    
