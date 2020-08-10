@@ -1,7 +1,5 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
-import logging
 from odoo import models, _
-_logger = logging.getLogger(__name__)
 
 
 class TrialBalanceXslx(models.AbstractModel):
