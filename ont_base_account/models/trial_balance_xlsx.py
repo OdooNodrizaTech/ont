@@ -26,7 +26,7 @@ class TrialBalanceXslx(models.AbstractModel):
                     'width': 7
                 }
             }
-            content_new[1]['width']: 46
+            content_new[1]['width'] = 46
             for content_key in content:
                 if content_key >= 2:
                     content_new[len(content_new)] = content[content_key]
