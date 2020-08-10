@@ -19,10 +19,10 @@
         <xpath expr="//div[hasclass('act_as_cell', 'amount')][1]" position="before">
             <t t-if="not show_partner_details">
                  <div class="act_as_cell left">
-                     <span t-field="line.account_id.custom_type"/>
+                     <span t-field="line.custom_type"/>
                  </div>
                 <div class="act_as_cell left">
-                     <span t-field="line.account_id.custom_classification"/>
+                     <span t-field="line.custom_classification"/>
                  </div>
             </t>
         </xpath>
