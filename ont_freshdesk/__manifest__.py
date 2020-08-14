@@ -8,7 +8,10 @@
     "website": "https://nodrizatech.com/",
     "category": "Tools",
     "license": "AGPL-3",
-    "depends": ["base"],
+    "depends": [
+        "base",
+        "web"
+    ],
     "data": [
         "views/resources.xml",
     ],
