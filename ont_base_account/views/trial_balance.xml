@@ -2,7 +2,6 @@
 <odoo>
     <template id="ont_base_account_report_trial_balance_lines_header"
               name="ont_base_account_report_trial_balance_lines_header"
-              customize_show="True"
               inherit_id="account_financial_report.report_trial_balance_lines_header"
               priority="20">
         <xpath expr="//div[hasclass('act_as_thead')]/div[hasclass('act_as_row')]/t[@t-if='not show_partner_details']/div[hasclass('act_as_cell')][2]" position="replace">
@@ -13,7 +12,6 @@
     </template>
     <template id="ont_base_account_report_trial_balance_line"
               name="ont_base_account_report_trial_balance_line"
-              customize_show="True"
               inherit_id="account_financial_report.report_trial_balance_line"
               priority="20">
         <xpath expr="//div[hasclass('act_as_cell', 'amount')][1]" position="before">
