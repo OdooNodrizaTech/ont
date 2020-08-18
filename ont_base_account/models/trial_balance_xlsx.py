@@ -15,7 +15,6 @@ class TrialBalanceXslx(models.AbstractModel):
                 2: {
                     'header': _("Type"),
                     'field': 'custom_type',
-                    'type': 'selection',
                     'width': 7
                 },
                 3: {
