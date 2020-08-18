@@ -29,6 +29,7 @@
         "views/account_payment_term_view.xml",
         "views/sale_order_view.xml",
         "views/trial_balance.xml",
+        "views/general_ledger_wizard.xml",
     ],
     "installable": True
 }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="general_ledger_wizard_ont_base_account" model="ir.ui.view">
+        <field name="name">general_ledger_wizard_ont_base_account</field>
+        <field name="model">general.ledger.report.wizard</field>
+        <field name="inherit_id" ref="account_financial_report.general_ledger_wizard" />
+        <field name="priority" eval="20"/>
+        <field name="arch" type="xml">
+            <field name="partner_ids" position="replace">
+                <field name="partner_ids" nolabel="1" options="{'no_create': True}"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>
