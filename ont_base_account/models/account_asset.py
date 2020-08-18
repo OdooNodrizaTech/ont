@@ -44,3 +44,15 @@ class AccountAsset(models.Model):
             fields.Date.today(),
             check_triggers=True
         )
+        if items:
+            for item in items:
+                lines = self.env['account.asset.line'].search(
+                    [
+                        ('asset_id', '=', item.id),
+                        ('type', '=', 'create'),
+                        ('move_id', '=', False),
+                    ]
+                )
+                if lines:
+                    for line in lines:
+                        line.create_move()
