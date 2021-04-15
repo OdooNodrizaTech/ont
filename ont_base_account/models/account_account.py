@@ -23,6 +23,11 @@ class AccountAccount(models.Model):
             ('transportation', 'Transporte'),
             ('financial', 'Financiero'),
             ('other', 'Otro'),
+            ('provisioning', 'Aprovisionamiento'),
+            ('grossincome', 'Ingresos Brutos'),
+            ('otherincome', 'Otros ingresos de explotacion'),
+            ('financialincome', 'Ingresos financieros'),
+            ('extraordinaryresult', 'Resultado extraordinario'),
         ],
         string='Clasificacion'
     )
